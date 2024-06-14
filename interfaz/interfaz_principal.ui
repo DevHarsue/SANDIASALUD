@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">*{
+	font-family: Agency FB;
+	font-weight: bold;
+	font-size: 16pt;
+}
+
+#centralwidget{
+	background: qlineargradient(spread:pad, x1:0.438778, y1:1, x2:0.495, y2:0, stop:0 rgba(67, 37, 70, 255), stop:1 rgba(44, 1, 70, 255))
+}
+
+#contenedor_principal{
+	background: #ffffff;
+	border-radius: 1em;
+	
+}
+
+#LOGO{
+	color: black;
+}
+
+#widget_menu QPushButton, #widget_opciones QPushButton,#boton_registrar{
+	color: #2C0146;
+	border:none;
+	border-left: 2px solid #2C0146;
+	border-right: 2px solid #2C0146;
+	padding: 0.1em 0.8em;
+}
+
+#widget_menu QPushButton:hover, #widget_opciones QPushButton:hover,#boton_registrar:hover,#widget_menu QPushButton:focus, #widget_opciones QPushButton:focus,#boton_registrar:focus{
+	color: #60029a;
+	border-color: #60029a;
+}
+
+#widget_menu QPushButton:pressed, #widget_opciones QPushButton:pressed,#boton_registrar:pressed{
+	color: black;
+	border-color: black;
+}
+
+#widget_registrar_pacientes,#widget_citas,#widget_pacientes{
+	background: transparent;
+	border: 2px solid #2C0146;
+	border-radius: 0.5em;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QWidget" name="contenedor_principal" native="true">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignTop">
+        <widget class="QWidget" name="widget_menu" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>CITAS</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>PACIENTES</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_3">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>REGISTRAR
+PACIENTES</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="1" alignment="Qt::AlignmentFlag::AlignRight">
+        <widget class="QWidget" name="widget_opciones" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="pushButton_4">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>CONFIGURACIÓN</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_5">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>CERRAR SESIÓN</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QWidget" name="contenedor_logo" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item alignment="Qt::AlignmentFlag::AlignHCenter">
+           <widget class="QLabel" name="LOGO">
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>80</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap>../images/logo_sin_fondo.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QStackedWidget" name="stacked_widget">
+         <property name="styleSheet">
+          <string notr="true">#nacionalidad{
+	background: white;
+	border: none;
+	min-width: 2em;
+	color: #2C0146;
+}
+
+#nacionalidad:focus{
+	border: 1px dashed  #2C0146;
+}
+
+#nacionalidad QAbstractItemView{
+	background: white;
+	border: none;
+	color: #2C0146;
+}
+
+#nacionalidad QAbstractItemView::item{
+	color: #2C0146;
+}
+
+#nacionalidad QAbstractItemView::item:selected {
+	border: none;
+	border-left: 2px solid #2C0146;
+	outline: none;
+}
+
+#widget_registrar_pacientes QLineEdit, #text_direccion{
+	background: white;
+	color:	#2C0146;
+	border: none;
+	border-bottom: 2px solid #2C0146;
+}
+
+#widget_registrar_pacientes QLineEdit:focus, #text_direccion:focus{
+	color: #60029a;
+	border-color: #60029a;
+}
+
+#fecha_nacimiento{
+	min-width: 6em;
+	background: transparent;
+	color: #2C0146;
+	border: none;
+	border-bottom: 2px solid #2C0146;
+}
+
+#boton_registrar{
+	background: transparent;
+
+}
+
+/*
+#2C0146;
+#60029a;
+</string>
+         </property>
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <widget class="QWidget" name="widget_citas"/>
+         <widget class="QWidget" name="widget_registrar_pacientes">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="1" column="2">
+              <widget class="QLineEdit" name="line_apellido">
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>APELLIDOS</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="line_nombre">
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>NOMBRES</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QPushButton" name="boton_registrar">
+               <property name="text">
+                <string>REGISTRAR</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QLineEdit" name="line_telefono">
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>TELEFONO</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1" colspan="2">
+              <widget class="QTextEdit" name="text_direccion">
+               <property name="tabChangesFocus">
+                <bool>true</bool>
+               </property>
+               <property name="placeholderText">
+                <string>DIRECCIÓN</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QLineEdit" name="line_cedula">
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>CEDULA</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QDateEdit" name="fecha_nacimiento">
+               <property name="calendarPopup">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QComboBox" name="nacionalidad">
+               <item>
+                <property name="text">
+                 <string>V</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>E</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="widget_pacientes"/>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>33</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <tabstops>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>nacionalidad</tabstop>
+  <tabstop>line_cedula</tabstop>
+  <tabstop>line_nombre</tabstop>
+  <tabstop>line_apellido</tabstop>
+  <tabstop>fecha_nacimiento</tabstop>
+  <tabstop>line_telefono</tabstop>
+  <tabstop>text_direccion</tabstop>
+  <tabstop>boton_registrar</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>pushButton_5</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
