@@ -40,7 +40,7 @@
 	color: black;
 }
 
-#widget_menu QPushButton, #widget_opciones QPushButton,#boton_registrar{
+QPushButton{
 	color: #2C0146;
 	border:none;
 	border-left: 2px solid #2C0146;
@@ -48,20 +48,24 @@
 	padding: 0.1em 0.8em;
 }
 
-#widget_menu QPushButton:hover, #widget_opciones QPushButton:hover,#boton_registrar:hover,#widget_menu QPushButton:focus, #widget_opciones QPushButton:focus,#boton_registrar:focus{
+QPushButton:hover,QPushButton:focus{
 	color: #60029a;
 	border-color: #60029a;
 }
 
-#widget_menu QPushButton:pressed, #widget_opciones QPushButton:pressed,#boton_registrar:pressed{
+QPushButton:pressed{
 	color: black;
 	border-color: black;
 }
 
-#widget_registrar_pacientes,#widget_citas,#widget_pacientes{
+QStackedWidget{
 	background: transparent;
 	border: 2px solid #2C0146;
 	border-radius: 0.5em;
+}
+
+QStackedWidget QWidget{
+	background: transparent;
 }
 </string>
   </property>
@@ -74,7 +78,17 @@
         <widget class="QWidget" name="widget_menu" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="boton_v_consulta">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>CONSULTA</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_v_citas">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -84,7 +98,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="boton_v_pacientes">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -94,39 +108,13 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="boton_v_registrar_pacientes">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="text">
              <string>REGISTRAR
 PACIENTES</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="0" column="1" alignment="Qt::AlignmentFlag::AlignRight">
-        <widget class="QWidget" name="widget_opciones" native="true">
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QPushButton" name="pushButton_4">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="text">
-             <string>CONFIGURACIÓN</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_5">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="text">
-             <string>CERRAR SESIÓN</string>
             </property>
            </widget>
           </item>
@@ -176,61 +164,161 @@ PACIENTES</string>
          </layout>
         </widget>
        </item>
+       <item row="0" column="1" alignment="Qt::AlignmentFlag::AlignRight">
+        <widget class="QWidget" name="widget_opciones" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="boton_v_configuracion">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>CONFIGURACIÓN</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_v_cerrar_sesion">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>CERRAR SESIÓN</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
        <item row="1" column="1">
         <widget class="QStackedWidget" name="stacked_widget">
          <property name="styleSheet">
-          <string notr="true">#nacionalidad{
+          <string notr="true">QLabel{
+	color: #2C0146;
+}
+
+QCheckBox{
+	color: #2C0146;
+}
+
+QCheckBox::indicator:unchecked:disabled{
+	image: url(&quot;images/disabled.png&quot;);
+	width: 16px;
+}
+
+QCheckBox::indicator:checked{
+	image: url(&quot;images/check.png&quot;);
+	width: 16px;
+}
+
+QCheckBox::indicator:unchecked{
+	image: url(&quot;images/unchecked.png&quot;);
+	width: 16px;
+}
+
+QComboBox{
 	background: white;
 	border: none;
 	min-width: 2em;
 	color: #2C0146;
 }
 
-#nacionalidad:focus{
+QComboBox:focus{
 	border: 1px dashed  #2C0146;
 }
 
-#nacionalidad QAbstractItemView{
+QComboBox QAbstractItemView{
 	background: white;
 	border: none;
 	color: #2C0146;
 }
 
-#nacionalidad QAbstractItemView::item{
+QComboBox QAbstractItemView::item{
 	color: #2C0146;
 }
 
-#nacionalidad QAbstractItemView::item:selected {
+QComboBox QAbstractItemView::item:selected {
 	border: none;
 	border-left: 2px solid #2C0146;
 	outline: none;
 }
 
-#widget_registrar_pacientes QLineEdit, #text_direccion{
+QLineEdit, QTextEdit{
 	background: white;
 	color:	#2C0146;
 	border: none;
 	border-bottom: 2px solid #2C0146;
 }
 
-#widget_registrar_pacientes QLineEdit:focus, #text_direccion:focus{
+QLineEdit:disabled, QTextEdit:disabled,QPushButton:disabled,QDateEdit:disabled{
+	background: rgb(235, 235, 235);
+	border-color: rgb(235, 235, 235);
+}
+
+QLineEdit:focus, QTextEdit:focus{
 	color: #60029a;
 	border-color: #60029a;
 }
 
-#fecha_nacimiento{
+QDateEdit{
+	padding-right:1em;
 	min-width: 6em;
-	background: transparent;
+	background: white;
 	color: #2C0146;
 	border: none;
 	border-bottom: 2px solid #2C0146;
 }
 
-#boton_registrar{
+QCalendarWidget{
+	min-width:12em;
+}
+
+QCalendarWidget QWidget {
+    alternate-background-color: #60029a;
+	background-color: #2C0146;
+	color: white;
+}
+
+#qt_calendar_prevmonth{
+	qproperty-icon:url(&quot;images/left-arrow.png&quot;);
+}
+
+#qt_calendar_nextmonth{
+	qproperty-icon:url(&quot;images/right-arrow.png&quot;);
+}
+
+#qt_calendar_navigationbar QSpinBox{
+	min-width:4em;
+}
+
+QPushButton{
 	background: transparent;
 
 }
 
+QScrollBar:vertical {
+        border: 1px solid white;
+        width:10px;
+        margin: 0px 0px 0px 0px;
+}
+QScrollBar::handle:vertical {
+ background: #2C0146;
+min-height: 0px;
+}
+QScrollBar::add-line:vertical {
+	height: 0px;
+	subcontrol-position: bottom;
+	subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+	height: 0px;
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+}
+
+Line{
+	background: #2C0146;
+}
 /*
 #2C0146;
 #60029a;
@@ -239,7 +327,56 @@ PACIENTES</string>
          <property name="currentIndex">
           <number>1</number>
          </property>
-         <widget class="QWidget" name="widget_citas"/>
+         <widget class="QWidget" name="widget_citas">
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <layout class="QGridLayout" name="gridLayout_3">
+             <item row="0" column="2">
+              <widget class="QPushButton" name="boton_buscar_cita">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">icon: url(&quot;images/search.png&quot;);</string>
+               </property>
+               <property name="text">
+                <string>BUSCAR</string>
+               </property>
+               <property name="icon">
+                <iconset theme="system-search"/>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QDateEdit" name="fecha_buscar_cita">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="calendarPopup">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QPushButton" name="boton_v_agendar">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>AGENDAR</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="3">
+              <widget class="QListWidget" name="lista_citas"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
          <widget class="QWidget" name="widget_registrar_pacientes">
           <property name="styleSheet">
            <string notr="true"/>
@@ -257,18 +394,11 @@ PACIENTES</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
-              <widget class="QLineEdit" name="line_nombre">
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-               <property name="placeholderText">
-                <string>NOMBRES</string>
-               </property>
-              </widget>
-             </item>
              <item row="5" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QPushButton" name="boton_registrar">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string>REGISTRAR</string>
                </property>
@@ -284,16 +414,6 @@ PACIENTES</string>
                </property>
               </widget>
              </item>
-             <item row="4" column="1" colspan="2">
-              <widget class="QTextEdit" name="text_direccion">
-               <property name="tabChangesFocus">
-                <bool>true</bool>
-               </property>
-               <property name="placeholderText">
-                <string>DIRECCIÓN</string>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QLineEdit" name="line_cedula">
                <property name="alignment">
@@ -306,6 +426,9 @@ PACIENTES</string>
              </item>
              <item row="2" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QDateEdit" name="fecha_nacimiento">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="calendarPopup">
                 <bool>true</bool>
                </property>
@@ -313,6 +436,9 @@ PACIENTES</string>
              </item>
              <item row="0" column="0">
               <widget class="QComboBox" name="nacionalidad">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <item>
                 <property name="text">
                  <string>V</string>
@@ -325,11 +451,913 @@ PACIENTES</string>
                </item>
               </widget>
              </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="line_nombre">
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>NOMBRES</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1" colspan="2">
+              <widget class="QTextEdit" name="text_direccion">
+               <property name="tabChangesFocus">
+                <bool>true</bool>
+               </property>
+               <property name="placeholderText">
+                <string>DIRECCIÓN</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="widget_pacientes"/>
+         <widget class="QWidget" name="widget_pacientes">
+          <layout class="QVBoxLayout" name="verticalLayout_11">
+           <item>
+            <widget class="QScrollArea" name="scrollArea">
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scrollAreaWidgetContents">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>242</width>
+                <height>1163</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_6">
+               <item>
+                <widget class="QWidget" name="contenedor_buscador" native="true">
+                 <layout class="QHBoxLayout" name="_2">
+                  <item>
+                   <widget class="QComboBox" name="combo_nacionalidad">
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>V</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>E</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="line_cedula_buscar">
+                    <property name="alignment">
+                     <set>Qt::AlignmentFlag::AlignCenter</set>
+                    </property>
+                    <property name="placeholderText">
+                     <string>CEDULA</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="boton_buscar">
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="text">
+                     <string>BUSCAR</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="Line" name="line_3">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QWidget" name="contenedor_datos" native="true">
+                 <layout class="QGridLayout" name="contenedor_datos_personales">
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="line_apellido_editar">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignmentFlag::AlignCenter</set>
+                    </property>
+                    <property name="placeholderText">
+                     <string>APELLIDO</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0" colspan="2">
+                   <widget class="QCheckBox" name="check_datos_personales">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="text">
+                     <string>EDITAR DATOS PERSONALES</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="label_9">
+                    <property name="text">
+                     <string>FECHA DE NACIMIENTO:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QDateEdit" name="date_fecha_nacimiento">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLineEdit" name="line_telefono_editar">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignmentFlag::AlignCenter</set>
+                    </property>
+                    <property name="placeholderText">
+                     <string>TELEFONO</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLineEdit" name="line_nombre_editar">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignmentFlag::AlignCenter</set>
+                    </property>
+                    <property name="placeholderText">
+                     <string>NOMBRE</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="0" colspan="2">
+                   <widget class="QTextEdit" name="text_direccion_editar">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>DIRECCION</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="Line" name="line">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QWidget" name="contenedor_cita" native="true">
+                 <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <item>
+                   <widget class="QCheckBox" name="check_proxima_cita">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="text">
+                     <string>EDITAR PROXIMA CITA</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QDateEdit" name="date_proxima_cita">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="Line" name="line_2">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QWidget" name="contenedor_consulta" native="true">
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <item>
+                   <widget class="QCheckBox" name="check_consulta">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="text">
+                     <string>EDITAR ULTIMA CONSULTA</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_6">
+                    <property name="text">
+                     <string>DIAGNOSTICO:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTextEdit" name="text_diagnostico">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>DIAGNOSTICO</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_8">
+                    <property name="text">
+                     <string>TRATAMIENTO:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTextEdit" name="text_tratamiento_consulta">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>TRATAMIENTO</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="Line" name="line_4">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QWidget" name="contenedor_antecedentes" native="true">
+                 <layout class="QVBoxLayout" name="verticalLayout_9">
+                  <item>
+                   <widget class="QCheckBox" name="check_antecedentes">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="text">
+                     <string>EDITAR ANTECEDENTES</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_3">
+                    <property name="text">
+                     <string>ANTECEDENTES PATOLOGICOS:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTextEdit" name="text_patologicos">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>ANTECEDENTES PATOLOGICOS</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_4">
+                    <property name="text">
+                     <string>ANTECEDENTES QUIRURJICOS:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTextEdit" name="text_quirurjicos">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>ANTECEDENTES QUIRURJICOS</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_5">
+                    <property name="text">
+                     <string>TRATAMIENTO:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTextEdit" name="text_tratamiento">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>TRATAMIENTO</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="label_7">
+                    <property name="text">
+                     <string>ULTIMA RELACION:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QDateEdit" name="date_relaciones">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="Line" name="line_5">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QWidget" name="contenedor_datos_embarazo" native="true">
+                 <property name="cursor">
+                  <cursorShape>ArrowCursor</cursorShape>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_10">
+                  <item>
+                   <widget class="QCheckBox" name="check_embarazo">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string>EDITAR DATOS DE EMBARAZO</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="label">
+                    <property name="text">
+                     <string>ULTIMA REGLA:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QDateEdit" name="date_ultima_regla">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="label_2">
+                    <property name="text">
+                     <string>PARTO:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QDateEdit" name="date_parto">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QPushButton" name="boton_actualizar_datos">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>ACTUALIZAR</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="boton_imprimir">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>IMPRIMIR</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="widget_registrar_antecedente">
+          <layout class="QVBoxLayout" name="verticalLayout_16">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_15">
+             <item alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>ANTECEDENTES</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="textEdit_3">
+               <property name="placeholderText">
+                <string>ANTECEDENTES PATOLOGICOS</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="textEdit_4">
+               <property name="placeholderText">
+                <string>ANTECEDENTES QUIRURJICOS</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTextEdit" name="textEdit_5">
+               <property name="placeholderText">
+                <string>TRATAMIENTO ACTUAL</string>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QPushButton" name="boton_registrar_antecedentes">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>ACEPTAR</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="widget_agendar_cita">
+          <layout class="QVBoxLayout" name="verticalLayout_17">
+           <item>
+            <layout class="QGridLayout" name="gridLayout_6">
+             <item row="0" column="0">
+              <widget class="QComboBox" name="combo_nacionalidad_agenda">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <item>
+                <property name="text">
+                 <string>V</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>E</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="line_cedula_agenda">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>CEDULA</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QPushButton" name="boton_bucar_agenda">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>BUSCAR</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="3">
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <item>
+                <widget class="QLineEdit" name="line_nombre_agenda">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                 <property name="placeholderText">
+                  <string>NOMBRE</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="line_apellido_agenda">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                 <property name="placeholderText">
+                  <string>APELLIDO</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="2" column="0" colspan="3">
+              <widget class="QLabel" name="label_15">
+               <property name="text">
+                <string>AGENDAR CITA PARA:</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0" colspan="3" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QDateEdit" name="date_agenda">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0" colspan="3" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QPushButton" name="boton_agendar">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>AGENDAR</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="widget_consulta">
+          <layout class="QVBoxLayout" name="verticalLayout_12">
+           <item>
+            <widget class="QScrollArea" name="scrollArea_2">
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scrollAreaWidgetContents_2">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>232</width>
+                <height>812</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_13">
+               <item>
+                <layout class="QGridLayout" name="gridLayout_5">
+                 <item row="5" column="0" colspan="4">
+                  <widget class="QWidget" name="consulta_antecedentes" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_14">
+                    <item>
+                     <widget class="QLabel" name="label_11">
+                      <property name="text">
+                       <string>ANTECEDENTES PATOLOGICOS:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QTextEdit" name="text_antecedente_patologico">
+                      <property name="placeholderText">
+                       <string>ANTECEDENTES PATOLOGICOS</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_12">
+                      <property name="text">
+                       <string>ANTECEDENTES QUIRURJICOS:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QTextEdit" name="text_antecedentes_quirurjicos">
+                      <property name="placeholderText">
+                       <string>ANTECEDENTES QUIRURJICOS</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_13">
+                      <property name="text">
+                       <string>TRATAMIENTO:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QTextEdit" name="text_tratamiento_actual">
+                      <property name="placeholderText">
+                       <string>TRATAMIENTO ACTUAL</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="7" column="0" colspan="4" alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QLabel" name="label_10">
+                   <property name="text">
+                    <string>FECHA RELACIONES:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="10" column="0" colspan="4">
+                  <widget class="QTextEdit" name="text_consulta_tratamiento">
+                   <property name="placeholderText">
+                    <string>TRATAMIENTO</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QComboBox" name="combo_consulta_antecedentes">
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">max-width:3em;</string>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>V</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>E</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="4" column="0" colspan="4" alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QPushButton" name="boton_ver_antecedentes">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>VER ANTECEDENTES</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="3">
+                  <widget class="QPushButton" name="boton_consulta_cedula">
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>BUSCAR</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1" colspan="2">
+                  <widget class="QLineEdit" name="line_consulta_cedula">
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                   <property name="placeholderText">
+                    <string>CEDULA</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0" colspan="4">
+                  <widget class="Line" name="line_8">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="8" column="0" colspan="4" alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QDateEdit" name="dateEdit">
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0" colspan="4">
+                  <layout class="QHBoxLayout" name="horizontalLayout_3">
+                   <item>
+                    <widget class="QLineEdit" name="line_consulta_nombre">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignmentFlag::AlignCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>NOMBRE</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="line_consulta_apellido">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignmentFlag::AlignCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>APELLIDO</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="9" column="0" colspan="4">
+                  <widget class="QTextEdit" name="text_consulta_diagnostico">
+                   <property name="placeholderText">
+                    <string>DIAGNOSTICO</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="0" colspan="4">
+                  <widget class="Line" name="line_9">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="checkBox">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string>AGENDAR PROXIMA CITA</string>
+                 </property>
+                </widget>
+               </item>
+               <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                <widget class="QDateEdit" name="dateEdit_2">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="Line" name="line_7">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="checkBox_2">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string>EMBARAZO</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QWidget" name="contenedor_embarazo" native="true">
+                 <layout class="QVBoxLayout" name="verticalLayout_19">
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="label_18">
+                    <property name="text">
+                     <string>ULTIMA REGLA:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QDateEdit" name="date_consulta_ultima_regla">
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLabel" name="label_19">
+                    <property name="text">
+                     <string>PARTO:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QDateEdit" name="date_consulta_parto">
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
+            <widget class="QPushButton" name="boton_fin_consulta">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>FIN DE LA CONSULTA</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -337,22 +1365,12 @@ PACIENTES</string>
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>33</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_2</tabstop>
-  <tabstop>pushButton_3</tabstop>
+  <tabstop>boton_v_citas</tabstop>
+  <tabstop>boton_v_pacientes</tabstop>
+  <tabstop>boton_v_registrar_pacientes</tabstop>
   <tabstop>nacionalidad</tabstop>
   <tabstop>line_cedula</tabstop>
   <tabstop>line_nombre</tabstop>
@@ -361,8 +1379,8 @@ PACIENTES</string>
   <tabstop>line_telefono</tabstop>
   <tabstop>text_direccion</tabstop>
   <tabstop>boton_registrar</tabstop>
-  <tabstop>pushButton_4</tabstop>
-  <tabstop>pushButton_5</tabstop>
+  <tabstop>boton_v_configuracion</tabstop>
+  <tabstop>boton_v_cerrar_sesion</tabstop>
  </tabstops>
  <resources/>
  <connections/>
