@@ -16,19 +16,22 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateEdit,
-    QFrame, QGridLayout, QHBoxLayout, QLabel,
-    QLineEdit, QListWidget, QListWidgetItem, QMainWindow,
-    QPushButton, QScrollArea, QSizePolicy, QSpacerItem,
-    QStackedWidget, QStatusBar, QTextEdit, QVBoxLayout,
+    QDateTimeEdit, QFrame, QGridLayout, QHBoxLayout,
+    QLabel, QLineEdit, QListWidget, QListWidgetItem,
+    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QStackedWidget, QTextEdit, QVBoxLayout,
     QWidget)
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        if not MainWindow.objectName():
-            MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 600)
-        MainWindow.setMinimumSize(QSize(800, 600))
-        MainWindow.setStyleSheet(u"*{\n"
+class Ui_SANDIASALUD(object):
+    def setupUi(self, SANDIASALUD):
+        if not SANDIASALUD.objectName():
+            SANDIASALUD.setObjectName(u"SANDIASALUD")
+        SANDIASALUD.resize(800, 600)
+        SANDIASALUD.setMinimumSize(QSize(800, 600))
+        icon = QIcon()
+        icon.addFile(u"../images/logo.jpeg", QSize(), QIcon.Normal, QIcon.Off)
+        SANDIASALUD.setWindowIcon(icon)
+        SANDIASALUD.setStyleSheet(u"*{\n"
 "	font-family: Agency FB;\n"
 "	font-weight: bold;\n"
 "	font-size: 16pt;\n"
@@ -75,8 +78,17 @@ class Ui_MainWindow(object):
 "QStackedWidget QWidget{\n"
 "	background: transparent;\n"
 "}\n"
-"")
-        self.centralwidget = QWidget(MainWindow)
+"\n"
+"QMessageBox{\n"
+"	background:white;\n"
+"	color:#2C0146;\n"
+"}\n"
+""
+                        "\n"
+"QMessageBox QLabel{\n"
+"	color:#2C0146;\n"
+"}")
+        self.centralwidget = QWidget(SANDIASALUD)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -121,14 +133,15 @@ class Ui_MainWindow(object):
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.LOGO = QLabel(self.contenedor_logo)
-        self.LOGO.setObjectName(u"LOGO")
-        self.LOGO.setMaximumSize(QSize(80, 80))
-        self.LOGO.setPixmap(QPixmap(u"images/logo_sin_fondo.png"))
-        self.LOGO.setScaledContents(True)
-        self.LOGO.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.boton_inicio = QPushButton(self.contenedor_logo)
+        self.boton_inicio.setObjectName(u"boton_inicio")
+        self.boton_inicio.setCursor(QCursor(Qt.PointingHandCursor))
+        self.boton_inicio.setStyleSheet(u"image: url(\"images/logo_sin_fondo.png\");\n"
+"width:80px;\n"
+"height:80px;\n"
+"border:none;")
 
-        self.verticalLayout.addWidget(self.LOGO, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.verticalLayout.addWidget(self.boton_inicio)
 
 
         self.gridLayout.addWidget(self.contenedor_logo, 0, 0, 1, 1)
@@ -142,6 +155,11 @@ class Ui_MainWindow(object):
         self.boton_v_configuracion.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.horizontalLayout.addWidget(self.boton_v_configuracion)
+
+        self.boton_registrar_usuarios = QPushButton(self.widget_opciones)
+        self.boton_registrar_usuarios.setObjectName(u"boton_registrar_usuarios")
+
+        self.horizontalLayout.addWidget(self.boton_registrar_usuarios)
 
         self.boton_v_cerrar_sesion = QPushButton(self.widget_opciones)
         self.boton_v_cerrar_sesion.setObjectName(u"boton_v_cerrar_sesion")
@@ -222,7 +240,7 @@ class Ui_MainWindow(object):
 "	border-color: #60029a;\n"
 "}\n"
 "\n"
-"QDateEdit{\n"
+"QDateEdit,QDateTimeEdit{\n"
 "	padding-right:1em;\n"
 "	min-width: 6em;\n"
 "	background: white;\n"
@@ -259,8 +277,8 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QScrollBar:vertical {\n"
-"        border: 1px soli"
-                        "d white;\n"
+"        bo"
+                        "rder: 1px solid white;\n"
 "        width:10px;\n"
 "        margin: 0px 0px 0px 0px;\n"
 "}\n"
@@ -296,8 +314,8 @@ class Ui_MainWindow(object):
         self.boton_buscar_cita.setObjectName(u"boton_buscar_cita")
         self.boton_buscar_cita.setCursor(QCursor(Qt.PointingHandCursor))
         self.boton_buscar_cita.setStyleSheet(u"icon: url(\"images/search.png\");")
-        icon = QIcon(QIcon.fromTheme(u"system-search"))
-        self.boton_buscar_cita.setIcon(icon)
+        icon1 = QIcon(QIcon.fromTheme(u"system-search"))
+        self.boton_buscar_cita.setIcon(icon1)
 
         self.gridLayout_3.addWidget(self.boton_buscar_cita, 0, 2, 1, 1)
 
@@ -386,6 +404,18 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addLayout(self.gridLayout_2)
 
         self.stacked_widget.addWidget(self.widget_registrar_pacientes)
+        self.widget_inicio = QWidget()
+        self.widget_inicio.setObjectName(u"widget_inicio")
+        self.verticalLayout_18 = QVBoxLayout(self.widget_inicio)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.label_16 = QLabel(self.widget_inicio)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setStyleSheet(u"image:url(\"images/logo_completo.jpeg\")")
+        self.label_16.setScaledContents(True)
+
+        self.verticalLayout_18.addWidget(self.label_16)
+
+        self.stacked_widget.addWidget(self.widget_inicio)
         self.widget_pacientes = QWidget()
         self.widget_pacientes.setObjectName(u"widget_pacientes")
         self.verticalLayout_11 = QVBoxLayout(self.widget_pacientes)
@@ -395,7 +425,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 242, 1163))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, -154, 592, 1373))
         self.verticalLayout_6 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.contenedor_buscador = QWidget(self.scrollAreaWidgetContents)
@@ -459,6 +489,7 @@ class Ui_MainWindow(object):
         self.date_fecha_nacimiento.setObjectName(u"date_fecha_nacimiento")
         self.date_fecha_nacimiento.setEnabled(False)
         self.date_fecha_nacimiento.setCursor(QCursor(Qt.PointingHandCursor))
+        self.date_fecha_nacimiento.setCalendarPopup(True)
 
         self.contenedor_datos_personales.addWidget(self.date_fecha_nacimiento, 3, 0, 1, 2, Qt.AlignmentFlag.AlignHCenter)
 
@@ -479,6 +510,7 @@ class Ui_MainWindow(object):
         self.text_direccion_editar = QTextEdit(self.contenedor_datos)
         self.text_direccion_editar.setObjectName(u"text_direccion_editar")
         self.text_direccion_editar.setEnabled(False)
+        self.text_direccion_editar.setMinimumSize(QSize(0, 80))
 
         self.contenedor_datos_personales.addWidget(self.text_direccion_editar, 5, 0, 1, 2)
 
@@ -507,6 +539,7 @@ class Ui_MainWindow(object):
         self.date_proxima_cita.setObjectName(u"date_proxima_cita")
         self.date_proxima_cita.setEnabled(False)
         self.date_proxima_cita.setCursor(QCursor(Qt.PointingHandCursor))
+        self.date_proxima_cita.setCalendarPopup(True)
 
         self.verticalLayout_7.addWidget(self.date_proxima_cita, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -539,6 +572,7 @@ class Ui_MainWindow(object):
         self.text_diagnostico = QTextEdit(self.contenedor_consulta)
         self.text_diagnostico.setObjectName(u"text_diagnostico")
         self.text_diagnostico.setEnabled(False)
+        self.text_diagnostico.setMinimumSize(QSize(0, 80))
 
         self.verticalLayout_8.addWidget(self.text_diagnostico)
 
@@ -550,6 +584,7 @@ class Ui_MainWindow(object):
         self.text_tratamiento_consulta = QTextEdit(self.contenedor_consulta)
         self.text_tratamiento_consulta.setObjectName(u"text_tratamiento_consulta")
         self.text_tratamiento_consulta.setEnabled(False)
+        self.text_tratamiento_consulta.setMinimumSize(QSize(0, 80))
 
         self.verticalLayout_8.addWidget(self.text_tratamiento_consulta)
 
@@ -582,6 +617,7 @@ class Ui_MainWindow(object):
         self.text_patologicos = QTextEdit(self.contenedor_antecedentes)
         self.text_patologicos.setObjectName(u"text_patologicos")
         self.text_patologicos.setEnabled(False)
+        self.text_patologicos.setMinimumSize(QSize(0, 80))
 
         self.verticalLayout_9.addWidget(self.text_patologicos)
 
@@ -593,6 +629,7 @@ class Ui_MainWindow(object):
         self.text_quirurjicos = QTextEdit(self.contenedor_antecedentes)
         self.text_quirurjicos.setObjectName(u"text_quirurjicos")
         self.text_quirurjicos.setEnabled(False)
+        self.text_quirurjicos.setMinimumSize(QSize(0, 80))
 
         self.verticalLayout_9.addWidget(self.text_quirurjicos)
 
@@ -604,6 +641,7 @@ class Ui_MainWindow(object):
         self.text_tratamiento = QTextEdit(self.contenedor_antecedentes)
         self.text_tratamiento.setObjectName(u"text_tratamiento")
         self.text_tratamiento.setEnabled(False)
+        self.text_tratamiento.setMinimumSize(QSize(0, 80))
 
         self.verticalLayout_9.addWidget(self.text_tratamiento)
 
@@ -616,6 +654,7 @@ class Ui_MainWindow(object):
         self.date_relaciones.setObjectName(u"date_relaciones")
         self.date_relaciones.setEnabled(False)
         self.date_relaciones.setCursor(QCursor(Qt.PointingHandCursor))
+        self.date_relaciones.setCalendarPopup(True)
 
         self.verticalLayout_9.addWidget(self.date_relaciones, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -649,6 +688,7 @@ class Ui_MainWindow(object):
         self.date_ultima_regla.setObjectName(u"date_ultima_regla")
         self.date_ultima_regla.setEnabled(False)
         self.date_ultima_regla.setCursor(QCursor(Qt.PointingHandCursor))
+        self.date_ultima_regla.setCalendarPopup(True)
 
         self.verticalLayout_10.addWidget(self.date_ultima_regla, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -661,6 +701,7 @@ class Ui_MainWindow(object):
         self.date_parto.setObjectName(u"date_parto")
         self.date_parto.setEnabled(False)
         self.date_parto.setCursor(QCursor(Qt.PointingHandCursor))
+        self.date_parto.setCalendarPopup(True)
 
         self.verticalLayout_10.addWidget(self.date_parto, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -702,20 +743,23 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_15.addWidget(self.label_14, 0, Qt.AlignmentFlag.AlignHCenter)
 
-        self.textEdit_3 = QTextEdit(self.widget_registrar_antecedente)
-        self.textEdit_3.setObjectName(u"textEdit_3")
+        self.text_antecedente_patologico_registro = QTextEdit(self.widget_registrar_antecedente)
+        self.text_antecedente_patologico_registro.setObjectName(u"text_antecedente_patologico_registro")
+        self.text_antecedente_patologico_registro.setTabChangesFocus(True)
 
-        self.verticalLayout_15.addWidget(self.textEdit_3)
+        self.verticalLayout_15.addWidget(self.text_antecedente_patologico_registro)
 
-        self.textEdit_4 = QTextEdit(self.widget_registrar_antecedente)
-        self.textEdit_4.setObjectName(u"textEdit_4")
+        self.text_antecedente_quirurjico_registro = QTextEdit(self.widget_registrar_antecedente)
+        self.text_antecedente_quirurjico_registro.setObjectName(u"text_antecedente_quirurjico_registro")
+        self.text_antecedente_quirurjico_registro.setTabChangesFocus(True)
 
-        self.verticalLayout_15.addWidget(self.textEdit_4)
+        self.verticalLayout_15.addWidget(self.text_antecedente_quirurjico_registro)
 
-        self.textEdit_5 = QTextEdit(self.widget_registrar_antecedente)
-        self.textEdit_5.setObjectName(u"textEdit_5")
+        self.text_tratamiento_registro = QTextEdit(self.widget_registrar_antecedente)
+        self.text_tratamiento_registro.setObjectName(u"text_tratamiento_registro")
+        self.text_tratamiento_registro.setTabChangesFocus(True)
 
-        self.verticalLayout_15.addWidget(self.textEdit_5)
+        self.verticalLayout_15.addWidget(self.text_tratamiento_registro)
 
         self.boton_registrar_antecedentes = QPushButton(self.widget_registrar_antecedente)
         self.boton_registrar_antecedentes.setObjectName(u"boton_registrar_antecedentes")
@@ -747,11 +791,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.line_cedula_agenda, 0, 1, 1, 1)
 
-        self.boton_bucar_agenda = QPushButton(self.widget_agendar_cita)
-        self.boton_bucar_agenda.setObjectName(u"boton_bucar_agenda")
-        self.boton_bucar_agenda.setCursor(QCursor(Qt.PointingHandCursor))
+        self.boton_buscar_agenda = QPushButton(self.widget_agendar_cita)
+        self.boton_buscar_agenda.setObjectName(u"boton_buscar_agenda")
+        self.boton_buscar_agenda.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.gridLayout_6.addWidget(self.boton_bucar_agenda, 0, 2, 1, 1)
+        self.gridLayout_6.addWidget(self.boton_buscar_agenda, 0, 2, 1, 1)
 
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
@@ -778,17 +822,18 @@ class Ui_MainWindow(object):
 
         self.gridLayout_6.addWidget(self.label_15, 2, 0, 1, 3)
 
-        self.date_agenda = QDateEdit(self.widget_agendar_cita)
-        self.date_agenda.setObjectName(u"date_agenda")
-        self.date_agenda.setCursor(QCursor(Qt.PointingHandCursor))
-
-        self.gridLayout_6.addWidget(self.date_agenda, 3, 0, 1, 3, Qt.AlignmentFlag.AlignHCenter)
-
         self.boton_agendar = QPushButton(self.widget_agendar_cita)
         self.boton_agendar.setObjectName(u"boton_agendar")
         self.boton_agendar.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.gridLayout_6.addWidget(self.boton_agendar, 4, 0, 1, 3, Qt.AlignmentFlag.AlignHCenter)
+
+        self.date_agenda = QDateTimeEdit(self.widget_agendar_cita)
+        self.date_agenda.setObjectName(u"date_agenda")
+        self.date_agenda.setCursor(QCursor(Qt.PointingHandCursor))
+        self.date_agenda.setCalendarPopup(True)
+
+        self.gridLayout_6.addWidget(self.date_agenda, 3, 0, 1, 3, Qt.AlignmentFlag.AlignHCenter)
 
 
         self.verticalLayout_17.addLayout(self.gridLayout_6)
@@ -807,7 +852,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 232, 812))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 592, 987))
         self.verticalLayout_13 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.gridLayout_5 = QGridLayout()
@@ -823,6 +868,7 @@ class Ui_MainWindow(object):
 
         self.text_antecedente_patologico = QTextEdit(self.consulta_antecedentes)
         self.text_antecedente_patologico.setObjectName(u"text_antecedente_patologico")
+        self.text_antecedente_patologico.setMinimumSize(QSize(0, 80))
 
         self.verticalLayout_14.addWidget(self.text_antecedente_patologico)
 
@@ -833,6 +879,7 @@ class Ui_MainWindow(object):
 
         self.text_antecedentes_quirurjicos = QTextEdit(self.consulta_antecedentes)
         self.text_antecedentes_quirurjicos.setObjectName(u"text_antecedentes_quirurjicos")
+        self.text_antecedentes_quirurjicos.setMinimumSize(QSize(0, 80))
 
         self.verticalLayout_14.addWidget(self.text_antecedentes_quirurjicos)
 
@@ -843,6 +890,7 @@ class Ui_MainWindow(object):
 
         self.text_tratamiento_actual = QTextEdit(self.consulta_antecedentes)
         self.text_tratamiento_actual.setObjectName(u"text_tratamiento_actual")
+        self.text_tratamiento_actual.setMinimumSize(QSize(0, 80))
 
         self.verticalLayout_14.addWidget(self.text_tratamiento_actual)
 
@@ -856,6 +904,7 @@ class Ui_MainWindow(object):
 
         self.text_consulta_tratamiento = QTextEdit(self.scrollAreaWidgetContents_2)
         self.text_consulta_tratamiento.setObjectName(u"text_consulta_tratamiento")
+        self.text_consulta_tratamiento.setMinimumSize(QSize(0, 80))
 
         self.gridLayout_5.addWidget(self.text_consulta_tratamiento, 10, 0, 1, 4)
 
@@ -897,6 +946,7 @@ class Ui_MainWindow(object):
         self.dateEdit = QDateEdit(self.scrollAreaWidgetContents_2)
         self.dateEdit.setObjectName(u"dateEdit")
         self.dateEdit.setCursor(QCursor(Qt.PointingHandCursor))
+        self.dateEdit.setCalendarPopup(True)
 
         self.gridLayout_5.addWidget(self.dateEdit, 8, 0, 1, 4, Qt.AlignmentFlag.AlignHCenter)
 
@@ -921,6 +971,7 @@ class Ui_MainWindow(object):
 
         self.text_consulta_diagnostico = QTextEdit(self.scrollAreaWidgetContents_2)
         self.text_consulta_diagnostico.setObjectName(u"text_consulta_diagnostico")
+        self.text_consulta_diagnostico.setMinimumSize(QSize(0, 80))
 
         self.gridLayout_5.addWidget(self.text_consulta_diagnostico, 9, 0, 1, 4)
 
@@ -943,6 +994,7 @@ class Ui_MainWindow(object):
         self.dateEdit_2 = QDateEdit(self.scrollAreaWidgetContents_2)
         self.dateEdit_2.setObjectName(u"dateEdit_2")
         self.dateEdit_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.dateEdit_2.setCalendarPopup(True)
 
         self.verticalLayout_13.addWidget(self.dateEdit_2, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -971,6 +1023,7 @@ class Ui_MainWindow(object):
         self.date_consulta_ultima_regla = QDateEdit(self.contenedor_embarazo)
         self.date_consulta_ultima_regla.setObjectName(u"date_consulta_ultima_regla")
         self.date_consulta_ultima_regla.setCursor(QCursor(Qt.PointingHandCursor))
+        self.date_consulta_ultima_regla.setCalendarPopup(True)
 
         self.verticalLayout_19.addWidget(self.date_consulta_ultima_regla, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -982,6 +1035,7 @@ class Ui_MainWindow(object):
         self.date_consulta_parto = QDateEdit(self.contenedor_embarazo)
         self.date_consulta_parto.setObjectName(u"date_consulta_parto")
         self.date_consulta_parto.setCursor(QCursor(Qt.PointingHandCursor))
+        self.date_consulta_parto.setCalendarPopup(True)
 
         self.verticalLayout_19.addWidget(self.date_consulta_parto, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -1005,10 +1059,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.contenedor_principal)
 
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QStatusBar(MainWindow)
-        self.statusbar.setObjectName(u"statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        SANDIASALUD.setCentralWidget(self.centralwidget)
         QWidget.setTabOrder(self.boton_v_citas, self.boton_v_pacientes)
         QWidget.setTabOrder(self.boton_v_pacientes, self.boton_v_registrar_pacientes)
         QWidget.setTabOrder(self.boton_v_registrar_pacientes, self.nacionalidad)
@@ -1022,102 +1073,104 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.boton_registrar, self.boton_v_configuracion)
         QWidget.setTabOrder(self.boton_v_configuracion, self.boton_v_cerrar_sesion)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi(SANDIASALUD)
 
-        self.stacked_widget.setCurrentIndex(1)
+        self.stacked_widget.setCurrentIndex(5)
 
 
-        QMetaObject.connectSlotsByName(MainWindow)
+        QMetaObject.connectSlotsByName(SANDIASALUD)
     # setupUi
 
-    def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.boton_v_consulta.setText(QCoreApplication.translate("MainWindow", u"CONSULTA", None))
-        self.boton_v_citas.setText(QCoreApplication.translate("MainWindow", u"CITAS", None))
-        self.boton_v_pacientes.setText(QCoreApplication.translate("MainWindow", u"PACIENTES", None))
-        self.boton_v_registrar_pacientes.setText(QCoreApplication.translate("MainWindow", u"REGISTRAR\n"
+    def retranslateUi(self, SANDIASALUD):
+        SANDIASALUD.setWindowTitle(QCoreApplication.translate("SANDIASALUD", u"SANDIA SALUD", None))
+        self.boton_v_consulta.setText(QCoreApplication.translate("SANDIASALUD", u"CONSULTA", None))
+        self.boton_v_citas.setText(QCoreApplication.translate("SANDIASALUD", u"CITAS", None))
+        self.boton_v_pacientes.setText(QCoreApplication.translate("SANDIASALUD", u"PACIENTES", None))
+        self.boton_v_registrar_pacientes.setText(QCoreApplication.translate("SANDIASALUD", u"REGISTRAR\n"
 "PACIENTES", None))
-        self.LOGO.setText("")
-        self.boton_v_configuracion.setText(QCoreApplication.translate("MainWindow", u"CONFIGURACI\u00d3N", None))
-        self.boton_v_cerrar_sesion.setText(QCoreApplication.translate("MainWindow", u"CERRAR SESI\u00d3N", None))
-        self.boton_buscar_cita.setText(QCoreApplication.translate("MainWindow", u"BUSCAR", None))
-        self.boton_v_agendar.setText(QCoreApplication.translate("MainWindow", u"AGENDAR", None))
-        self.line_apellido.setPlaceholderText(QCoreApplication.translate("MainWindow", u"APELLIDOS", None))
-        self.boton_registrar.setText(QCoreApplication.translate("MainWindow", u"REGISTRAR", None))
-        self.line_telefono.setPlaceholderText(QCoreApplication.translate("MainWindow", u"TELEFONO", None))
-        self.line_cedula.setPlaceholderText(QCoreApplication.translate("MainWindow", u"CEDULA", None))
-        self.nacionalidad.setItemText(0, QCoreApplication.translate("MainWindow", u"V", None))
-        self.nacionalidad.setItemText(1, QCoreApplication.translate("MainWindow", u"E", None))
+        self.boton_inicio.setText("")
+        self.boton_v_configuracion.setText(QCoreApplication.translate("SANDIASALUD", u"CONFIGURACI\u00d3N", None))
+        self.boton_registrar_usuarios.setText(QCoreApplication.translate("SANDIASALUD", u"REGISTRAR USUARIOS", None))
+        self.boton_v_cerrar_sesion.setText(QCoreApplication.translate("SANDIASALUD", u"CERRAR SESI\u00d3N", None))
+        self.boton_buscar_cita.setText(QCoreApplication.translate("SANDIASALUD", u"BUSCAR", None))
+        self.boton_v_agendar.setText(QCoreApplication.translate("SANDIASALUD", u"AGENDAR", None))
+        self.line_apellido.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"APELLIDOS", None))
+        self.boton_registrar.setText(QCoreApplication.translate("SANDIASALUD", u"REGISTRAR", None))
+        self.line_telefono.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"TELEFONO", None))
+        self.line_cedula.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"CEDULA", None))
+        self.nacionalidad.setItemText(0, QCoreApplication.translate("SANDIASALUD", u"V", None))
+        self.nacionalidad.setItemText(1, QCoreApplication.translate("SANDIASALUD", u"E", None))
 
-        self.line_nombre.setPlaceholderText(QCoreApplication.translate("MainWindow", u"NOMBRES", None))
-        self.text_direccion.setPlaceholderText(QCoreApplication.translate("MainWindow", u"DIRECCI\u00d3N", None))
-        self.combo_nacionalidad.setItemText(0, QCoreApplication.translate("MainWindow", u"V", None))
-        self.combo_nacionalidad.setItemText(1, QCoreApplication.translate("MainWindow", u"E", None))
+        self.line_nombre.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"NOMBRES", None))
+        self.text_direccion.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"DIRECCI\u00d3N", None))
+        self.label_16.setText("")
+        self.combo_nacionalidad.setItemText(0, QCoreApplication.translate("SANDIASALUD", u"V", None))
+        self.combo_nacionalidad.setItemText(1, QCoreApplication.translate("SANDIASALUD", u"E", None))
 
-        self.line_cedula_buscar.setPlaceholderText(QCoreApplication.translate("MainWindow", u"CEDULA", None))
-        self.boton_buscar.setText(QCoreApplication.translate("MainWindow", u"BUSCAR", None))
-        self.line_apellido_editar.setPlaceholderText(QCoreApplication.translate("MainWindow", u"APELLIDO", None))
-        self.check_datos_personales.setText(QCoreApplication.translate("MainWindow", u"EDITAR DATOS PERSONALES", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"FECHA DE NACIMIENTO:", None))
-        self.line_telefono_editar.setPlaceholderText(QCoreApplication.translate("MainWindow", u"TELEFONO", None))
-        self.line_nombre_editar.setPlaceholderText(QCoreApplication.translate("MainWindow", u"NOMBRE", None))
-        self.text_direccion_editar.setPlaceholderText(QCoreApplication.translate("MainWindow", u"DIRECCION", None))
-        self.check_proxima_cita.setText(QCoreApplication.translate("MainWindow", u"EDITAR PROXIMA CITA", None))
-        self.check_consulta.setText(QCoreApplication.translate("MainWindow", u"EDITAR ULTIMA CONSULTA", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"DIAGNOSTICO:", None))
-        self.text_diagnostico.setPlaceholderText(QCoreApplication.translate("MainWindow", u"DIAGNOSTICO", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"TRATAMIENTO:", None))
-        self.text_tratamiento_consulta.setPlaceholderText(QCoreApplication.translate("MainWindow", u"TRATAMIENTO", None))
-        self.check_antecedentes.setText(QCoreApplication.translate("MainWindow", u"EDITAR ANTECEDENTES", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"ANTECEDENTES PATOLOGICOS:", None))
-        self.text_patologicos.setPlaceholderText(QCoreApplication.translate("MainWindow", u"ANTECEDENTES PATOLOGICOS", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"ANTECEDENTES QUIRURJICOS:", None))
-        self.text_quirurjicos.setPlaceholderText(QCoreApplication.translate("MainWindow", u"ANTECEDENTES QUIRURJICOS", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"TRATAMIENTO:", None))
-        self.text_tratamiento.setPlaceholderText(QCoreApplication.translate("MainWindow", u"TRATAMIENTO", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"ULTIMA RELACION:", None))
-        self.check_embarazo.setText(QCoreApplication.translate("MainWindow", u"EDITAR DATOS DE EMBARAZO", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"ULTIMA REGLA:", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"PARTO:", None))
-        self.boton_actualizar_datos.setText(QCoreApplication.translate("MainWindow", u"ACTUALIZAR", None))
-        self.boton_imprimir.setText(QCoreApplication.translate("MainWindow", u"IMPRIMIR", None))
-        self.label_14.setText(QCoreApplication.translate("MainWindow", u"ANTECEDENTES", None))
-        self.textEdit_3.setPlaceholderText(QCoreApplication.translate("MainWindow", u"ANTECEDENTES PATOLOGICOS", None))
-        self.textEdit_4.setPlaceholderText(QCoreApplication.translate("MainWindow", u"ANTECEDENTES QUIRURJICOS", None))
-        self.textEdit_5.setPlaceholderText(QCoreApplication.translate("MainWindow", u"TRATAMIENTO ACTUAL", None))
-        self.boton_registrar_antecedentes.setText(QCoreApplication.translate("MainWindow", u"ACEPTAR", None))
-        self.combo_nacionalidad_agenda.setItemText(0, QCoreApplication.translate("MainWindow", u"V", None))
-        self.combo_nacionalidad_agenda.setItemText(1, QCoreApplication.translate("MainWindow", u"E", None))
+        self.line_cedula_buscar.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"CEDULA", None))
+        self.boton_buscar.setText(QCoreApplication.translate("SANDIASALUD", u"BUSCAR", None))
+        self.line_apellido_editar.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"APELLIDO", None))
+        self.check_datos_personales.setText(QCoreApplication.translate("SANDIASALUD", u"EDITAR DATOS PERSONALES", None))
+        self.label_9.setText(QCoreApplication.translate("SANDIASALUD", u"FECHA DE NACIMIENTO:", None))
+        self.line_telefono_editar.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"TELEFONO", None))
+        self.line_nombre_editar.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"NOMBRE", None))
+        self.text_direccion_editar.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"DIRECCION", None))
+        self.check_proxima_cita.setText(QCoreApplication.translate("SANDIASALUD", u"EDITAR PROXIMA CITA", None))
+        self.check_consulta.setText(QCoreApplication.translate("SANDIASALUD", u"EDITAR ULTIMA CONSULTA", None))
+        self.label_6.setText(QCoreApplication.translate("SANDIASALUD", u"DIAGNOSTICO:", None))
+        self.text_diagnostico.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"DIAGNOSTICO", None))
+        self.label_8.setText(QCoreApplication.translate("SANDIASALUD", u"TRATAMIENTO:", None))
+        self.text_tratamiento_consulta.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"TRATAMIENTO", None))
+        self.check_antecedentes.setText(QCoreApplication.translate("SANDIASALUD", u"EDITAR ANTECEDENTES", None))
+        self.label_3.setText(QCoreApplication.translate("SANDIASALUD", u"ANTECEDENTES PATOLOGICOS:", None))
+        self.text_patologicos.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"ANTECEDENTES PATOLOGICOS", None))
+        self.label_4.setText(QCoreApplication.translate("SANDIASALUD", u"ANTECEDENTES QUIRURJICOS:", None))
+        self.text_quirurjicos.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"ANTECEDENTES QUIRURJICOS", None))
+        self.label_5.setText(QCoreApplication.translate("SANDIASALUD", u"TRATAMIENTO:", None))
+        self.text_tratamiento.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"TRATAMIENTO", None))
+        self.label_7.setText(QCoreApplication.translate("SANDIASALUD", u"ULTIMA RELACION:", None))
+        self.check_embarazo.setText(QCoreApplication.translate("SANDIASALUD", u"EDITAR DATOS DE EMBARAZO", None))
+        self.label.setText(QCoreApplication.translate("SANDIASALUD", u"ULTIMA REGLA:", None))
+        self.label_2.setText(QCoreApplication.translate("SANDIASALUD", u"PARTO:", None))
+        self.boton_actualizar_datos.setText(QCoreApplication.translate("SANDIASALUD", u"ACTUALIZAR", None))
+        self.boton_imprimir.setText(QCoreApplication.translate("SANDIASALUD", u"IMPRIMIR", None))
+        self.label_14.setText(QCoreApplication.translate("SANDIASALUD", u"ANTECEDENTES", None))
+        self.text_antecedente_patologico_registro.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"ANTECEDENTES PATOLOGICOS", None))
+        self.text_antecedente_quirurjico_registro.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"ANTECEDENTES QUIRURJICOS", None))
+        self.text_tratamiento_registro.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"TRATAMIENTO ACTUAL", None))
+        self.boton_registrar_antecedentes.setText(QCoreApplication.translate("SANDIASALUD", u"ACEPTAR", None))
+        self.combo_nacionalidad_agenda.setItemText(0, QCoreApplication.translate("SANDIASALUD", u"V", None))
+        self.combo_nacionalidad_agenda.setItemText(1, QCoreApplication.translate("SANDIASALUD", u"E", None))
 
         self.line_cedula_agenda.setText("")
-        self.line_cedula_agenda.setPlaceholderText(QCoreApplication.translate("MainWindow", u"CEDULA", None))
-        self.boton_bucar_agenda.setText(QCoreApplication.translate("MainWindow", u"BUSCAR", None))
-        self.line_nombre_agenda.setPlaceholderText(QCoreApplication.translate("MainWindow", u"NOMBRE", None))
+        self.line_cedula_agenda.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"CEDULA", None))
+        self.boton_buscar_agenda.setText(QCoreApplication.translate("SANDIASALUD", u"BUSCAR", None))
+        self.line_nombre_agenda.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"NOMBRE", None))
         self.line_apellido_agenda.setText("")
-        self.line_apellido_agenda.setPlaceholderText(QCoreApplication.translate("MainWindow", u"APELLIDO", None))
-        self.label_15.setText(QCoreApplication.translate("MainWindow", u"AGENDAR CITA PARA:", None))
-        self.boton_agendar.setText(QCoreApplication.translate("MainWindow", u"AGENDAR", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"ANTECEDENTES PATOLOGICOS:", None))
-        self.text_antecedente_patologico.setPlaceholderText(QCoreApplication.translate("MainWindow", u"ANTECEDENTES PATOLOGICOS", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"ANTECEDENTES QUIRURJICOS:", None))
-        self.text_antecedentes_quirurjicos.setPlaceholderText(QCoreApplication.translate("MainWindow", u"ANTECEDENTES QUIRURJICOS", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"TRATAMIENTO:", None))
-        self.text_tratamiento_actual.setPlaceholderText(QCoreApplication.translate("MainWindow", u"TRATAMIENTO ACTUAL", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"FECHA RELACIONES:", None))
-        self.text_consulta_tratamiento.setPlaceholderText(QCoreApplication.translate("MainWindow", u"TRATAMIENTO", None))
-        self.combo_consulta_antecedentes.setItemText(0, QCoreApplication.translate("MainWindow", u"V", None))
-        self.combo_consulta_antecedentes.setItemText(1, QCoreApplication.translate("MainWindow", u"E", None))
+        self.line_apellido_agenda.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"APELLIDO", None))
+        self.label_15.setText(QCoreApplication.translate("SANDIASALUD", u"AGENDAR CITA PARA:", None))
+        self.boton_agendar.setText(QCoreApplication.translate("SANDIASALUD", u"AGENDAR", None))
+        self.label_11.setText(QCoreApplication.translate("SANDIASALUD", u"ANTECEDENTES PATOLOGICOS:", None))
+        self.text_antecedente_patologico.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"ANTECEDENTES PATOLOGICOS", None))
+        self.label_12.setText(QCoreApplication.translate("SANDIASALUD", u"ANTECEDENTES QUIRURJICOS:", None))
+        self.text_antecedentes_quirurjicos.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"ANTECEDENTES QUIRURJICOS", None))
+        self.label_13.setText(QCoreApplication.translate("SANDIASALUD", u"TRATAMIENTO:", None))
+        self.text_tratamiento_actual.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"TRATAMIENTO ACTUAL", None))
+        self.label_10.setText(QCoreApplication.translate("SANDIASALUD", u"FECHA RELACIONES:", None))
+        self.text_consulta_tratamiento.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"TRATAMIENTO", None))
+        self.combo_consulta_antecedentes.setItemText(0, QCoreApplication.translate("SANDIASALUD", u"V", None))
+        self.combo_consulta_antecedentes.setItemText(1, QCoreApplication.translate("SANDIASALUD", u"E", None))
 
-        self.boton_ver_antecedentes.setText(QCoreApplication.translate("MainWindow", u"VER ANTECEDENTES", None))
-        self.boton_consulta_cedula.setText(QCoreApplication.translate("MainWindow", u"BUSCAR", None))
-        self.line_consulta_cedula.setPlaceholderText(QCoreApplication.translate("MainWindow", u"CEDULA", None))
-        self.line_consulta_nombre.setPlaceholderText(QCoreApplication.translate("MainWindow", u"NOMBRE", None))
-        self.line_consulta_apellido.setPlaceholderText(QCoreApplication.translate("MainWindow", u"APELLIDO", None))
-        self.text_consulta_diagnostico.setPlaceholderText(QCoreApplication.translate("MainWindow", u"DIAGNOSTICO", None))
-        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"AGENDAR PROXIMA CITA", None))
-        self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"EMBARAZO", None))
-        self.label_18.setText(QCoreApplication.translate("MainWindow", u"ULTIMA REGLA:", None))
-        self.label_19.setText(QCoreApplication.translate("MainWindow", u"PARTO:", None))
-        self.boton_fin_consulta.setText(QCoreApplication.translate("MainWindow", u"FIN DE LA CONSULTA", None))
+        self.boton_ver_antecedentes.setText(QCoreApplication.translate("SANDIASALUD", u"VER ANTECEDENTES", None))
+        self.boton_consulta_cedula.setText(QCoreApplication.translate("SANDIASALUD", u"BUSCAR", None))
+        self.line_consulta_cedula.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"CEDULA", None))
+        self.line_consulta_nombre.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"NOMBRE", None))
+        self.line_consulta_apellido.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"APELLIDO", None))
+        self.text_consulta_diagnostico.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"DIAGNOSTICO", None))
+        self.checkBox.setText(QCoreApplication.translate("SANDIASALUD", u"AGENDAR PROXIMA CITA", None))
+        self.checkBox_2.setText(QCoreApplication.translate("SANDIASALUD", u"EMBARAZO", None))
+        self.label_18.setText(QCoreApplication.translate("SANDIASALUD", u"ULTIMA REGLA:", None))
+        self.label_19.setText(QCoreApplication.translate("SANDIASALUD", u"PARTO:", None))
+        self.boton_fin_consulta.setText(QCoreApplication.translate("SANDIASALUD", u"FIN DE LA CONSULTA", None))
     # retranslateUi
 
