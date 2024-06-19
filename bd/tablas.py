@@ -5,7 +5,7 @@ class TablaPacientes(Tabla):
         super().__init__("pacientes")
     
     def select_cedula(self,nacionalidad,cedula):
-        return self.bd.consultar(f"SELECT * FROM pacientes WHERE cedula={cedula} AND nacionalidad='{nacionalidad}'")
+        return self.bd.consultar(f"SELECT * FROM pacientes WHERE cedula={cedula} AND nacionalidad='{nacionalidad}';")
 
 class TablaAntecedentes(Tabla):
     def __init__(self):
@@ -20,7 +20,10 @@ class TablaCitas(Tabla):
         super().__init__("citas")
 
     def select_citas_paciente(self,id_paciente):
-        return self.bd.consultar(f"SELECT * FROM citas WHERE id_paciente={id_paciente}")
+        return self.bd.consultar(f"SELECT * FROM citas WHERE id_paciente={id_paciente};")
+
+    def select_citas_fecha(self,fecha_inicio,fecha_fin):
+        return self.bd.consultar(f"CALL buscar_cita('{fecha_inicio}','{fecha_fin}');")
         
 class TablaConsultas(Tabla):
     def __init__(self):

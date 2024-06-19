@@ -18,8 +18,9 @@ class VentanaPrincipal(QMainWindow):
         self.asignar_slots_vistas()
         self.ajustar_ventana()
         self.vista_registrar_pacientes = VistaRegistrarPacientes(self)
-        self.vista_agendar_cita = VistaCitas(self)
+        self.vista_cita = VistaCitas(self)
         self.vista_agendar_cita = VistaAgendarCita(self)
+        
     
     def asignar_slots_vistas(self):
         self.ui.stacked_widget.setCurrentWidget(self.ui.widget_inicio)
@@ -29,7 +30,6 @@ class VentanaPrincipal(QMainWindow):
         self.ui.boton_v_consulta.pressed.connect(lambda:self.ui.stacked_widget.setCurrentWidget(self.ui.widget_consulta))
         self.ui.boton_v_pacientes.pressed.connect(lambda:self.ui.stacked_widget.setCurrentWidget(self.ui.widget_pacientes))
         self.ui.boton_v_registrar_pacientes.pressed.connect(lambda:self.ui.stacked_widget.setCurrentWidget(self.ui.widget_registrar_pacientes))
-    
     def ajustar_ventana(self):
         if not self.permisos[0]:
             self.ui.boton_v_consulta.hide()

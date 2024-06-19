@@ -35,7 +35,7 @@
 }
 
 #contenedor_principal{
-	background: #ffffff;
+	background: #e6e6fa;
 	border-radius: 1em;
 	
 }
@@ -106,6 +106,17 @@ QMessageBox QLabel{
             </property>
             <property name="text">
              <string>CITAS</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="boton_v_agendar">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>AGENDAR
+CITAS</string>
             </property>
            </widget>
           </item>
@@ -230,7 +241,7 @@ QCheckBox::indicator:unchecked{
 }
 
 QComboBox{
-	background: white;
+	background: #e6e6fa;
 	border: none;
 	min-width: 2em;
 	color: #2C0146;
@@ -241,7 +252,7 @@ QComboBox:focus{
 }
 
 QComboBox QAbstractItemView{
-	background: white;
+	background: #e6e6fa;
 	border: none;
 	color: #2C0146;
 }
@@ -257,15 +268,15 @@ QComboBox QAbstractItemView::item:selected {
 }
 
 QLineEdit, QTextEdit{
-	background: white;
+	background: #e6e6fa;
 	color:	#2C0146;
 	border: none;
 	border-bottom: 2px solid #2C0146;
 }
 
 QLineEdit:disabled, QTextEdit:disabled,QPushButton:disabled,QDateEdit:disabled{
-	background: rgb(235, 235, 235);
-	border-color: rgb(235, 235, 235);
+	background: rgb(205, 205, 205);
+	border-color: rgb(205, 205, 205);
 }
 
 QLineEdit:focus, QTextEdit:focus{
@@ -276,7 +287,7 @@ QLineEdit:focus, QTextEdit:focus{
 QDateEdit,QDateTimeEdit{
 	padding-right:1em;
 	min-width: 6em;
-	background: white;
+	background: #e6e6fa;
 	color: #2C0146;
 	border: none;
 	border-bottom: 2px solid #2C0146;
@@ -332,59 +343,183 @@ QScrollBar::sub-line:vertical {
 Line{
 	background: #2C0146;
 }
-/*
-#2C0146;
-#60029a;
+
+QTableView{
+	padding: 0.5em;
+	border: 2px solid #2C0146;
+	border-radius: 5px;
+	color: #2C0146;
+}
+
+QTableView::item:selected{
+	background:#2C0146;
+	color:white;
+}
+
+QTableView QHeaderView{
+	color: #2C0146;
+}
 </string>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="widget_citas">
           <layout class="QVBoxLayout" name="verticalLayout_5">
            <item>
             <layout class="QGridLayout" name="gridLayout_3">
-             <item row="0" column="2">
-              <widget class="QPushButton" name="boton_buscar_cita">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
+             <item row="0" column="0" colspan="3">
+              <layout class="QGridLayout" name="gridLayout_7">
+               <property name="rightMargin">
+                <number>0</number>
                </property>
-               <property name="styleSheet">
-                <string notr="true">icon: url(&quot;images/search.png&quot;);</string>
+               <property name="horizontalSpacing">
+                <number>24</number>
                </property>
-               <property name="text">
-                <string>BUSCAR</string>
-               </property>
-               <property name="icon">
-                <iconset theme="system-search"/>
-               </property>
-              </widget>
+               <item row="1" column="1">
+                <widget class="QDateEdit" name="date_cita_desde">
+                 <property name="calendarPopup">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1" alignment="Qt::AlignmentFlag::AlignHCenter">
+                <widget class="QLabel" name="label_21">
+                 <property name="text">
+                  <string>DESDE:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1" alignment="Qt::AlignmentFlag::AlignHCenter">
+                <widget class="QLabel" name="label_22">
+                 <property name="text">
+                  <string>HASTA:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QDateEdit" name="date_cita_hasta">
+                 <property name="calendarPopup">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2" rowspan="2" alignment="Qt::AlignmentFlag::AlignVCenter">
+                <widget class="QPushButton" name="boton_buscar_cita">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">icon: url(&quot;images/search.png&quot;);</string>
+                 </property>
+                 <property name="text">
+                  <string>BUSCAR</string>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="system-search"/>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QCheckBox" name="check_rango_cita">
+                 <property name="text">
+                  <string>BUSCAR POR RANGO</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
-             <item row="0" column="1">
-              <widget class="QDateEdit" name="fecha_buscar_cita">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
+             <item row="1" column="0" colspan="3">
+              <widget class="QTableWidget" name="tabla_citas">
+               <property name="enabled">
+                <bool>true</bool>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
-               <property name="calendarPopup">
+               <property name="horizontalScrollBarPolicy">
+                <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+               </property>
+               <property name="sizeAdjustPolicy">
+                <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+               </property>
+               <property name="alternatingRowColors">
                 <bool>true</bool>
                </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QPushButton" name="boton_v_agendar">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
+               <property name="selectionBehavior">
+                <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
                </property>
-               <property name="text">
-                <string>AGENDAR</string>
+               <property name="showGrid">
+                <bool>false</bool>
                </property>
+               <property name="gridStyle">
+                <enum>Qt::PenStyle::SolidLine</enum>
+               </property>
+               <property name="cornerButtonEnabled">
+                <bool>true</bool>
+               </property>
+               <property name="rowCount">
+                <number>0</number>
+               </property>
+               <attribute name="horizontalHeaderCascadingSectionResizes">
+                <bool>true</bool>
+               </attribute>
+               <attribute name="horizontalHeaderHighlightSections">
+                <bool>true</bool>
+               </attribute>
+               <attribute name="horizontalHeaderStretchLastSection">
+                <bool>true</bool>
+               </attribute>
+               <attribute name="verticalHeaderVisible">
+                <bool>false</bool>
+               </attribute>
+               <attribute name="verticalHeaderStretchLastSection">
+                <bool>false</bool>
+               </attribute>
+               <column>
+                <property name="text">
+                 <string>NACIONALIDAD</string>
+                </property>
+                <property name="textAlignment">
+                 <set>AlignLeading|AlignVCenter</set>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>CEDULA</string>
+                </property>
+                <property name="textAlignment">
+                 <set>AlignLeading|AlignVCenter</set>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>NOMBRE</string>
+                </property>
+                <property name="textAlignment">
+                 <set>AlignLeading|AlignVCenter</set>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>APELLIDO</string>
+                </property>
+                <property name="textAlignment">
+                 <set>AlignLeading|AlignVCenter</set>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>CITA</string>
+                </property>
+                <property name="textAlignment">
+                 <set>AlignLeading|AlignVCenter</set>
+                </property>
+               </column>
               </widget>
-             </item>
-             <item row="1" column="0" colspan="3">
-              <widget class="QListWidget" name="lista_citas"/>
              </item>
             </layout>
            </item>
@@ -493,7 +628,7 @@ Line{
            <item>
             <widget class="QLabel" name="label_16">
              <property name="styleSheet">
-              <string notr="true">image:url(&quot;images/logo_completo.jpeg&quot;)</string>
+              <string notr="true">image:url(&quot;images/logo_completo.png&quot;)</string>
              </property>
              <property name="text">
               <string/>
@@ -516,8 +651,8 @@ Line{
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>-154</y>
-                <width>592</width>
+                <y>0</y>
+                <width>242</width>
                 <height>1373</height>
                </rect>
               </property>
@@ -1185,7 +1320,7 @@ Line{
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>592</width>
+                <width>232</width>
                 <height>987</height>
                </rect>
               </property>

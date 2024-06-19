@@ -17,10 +17,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateEdit,
     QDateTimeEdit, QFrame, QGridLayout, QHBoxLayout,
-    QLabel, QLineEdit, QListWidget, QListWidgetItem,
-    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
-    QSpacerItem, QStackedWidget, QTextEdit, QVBoxLayout,
-    QWidget)
+    QHeaderView, QLabel, QLineEdit, QMainWindow,
+    QPushButton, QScrollArea, QSizePolicy, QSpacerItem,
+    QStackedWidget, QTableWidget, QTableWidgetItem, QTextEdit,
+    QVBoxLayout, QWidget)
 
 class Ui_SANDIASALUD(object):
     def setupUi(self, SANDIASALUD):
@@ -42,7 +42,7 @@ class Ui_SANDIASALUD(object):
 "}\n"
 "\n"
 "#contenedor_principal{\n"
-"	background: #ffffff;\n"
+"	background: #e6e6fa;\n"
 "	border-radius: 1em;\n"
 "	\n"
 "}\n"
@@ -83,9 +83,9 @@ class Ui_SANDIASALUD(object):
 "	background:white;\n"
 "	color:#2C0146;\n"
 "}\n"
-""
-                        "\n"
-"QMessageBox QLabel{\n"
+"\n"
+"QMessageBox QLa"
+                        "bel{\n"
 "	color:#2C0146;\n"
 "}")
         self.centralwidget = QWidget(SANDIASALUD)
@@ -111,6 +111,12 @@ class Ui_SANDIASALUD(object):
         self.boton_v_citas.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.verticalLayout_2.addWidget(self.boton_v_citas)
+
+        self.boton_v_agendar = QPushButton(self.widget_menu)
+        self.boton_v_agendar.setObjectName(u"boton_v_agendar")
+        self.boton_v_agendar.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_2.addWidget(self.boton_v_agendar)
 
         self.boton_v_pacientes = QPushButton(self.widget_menu)
         self.boton_v_pacientes.setObjectName(u"boton_v_pacientes")
@@ -196,7 +202,7 @@ class Ui_SANDIASALUD(object):
 "}\n"
 "\n"
 "QComboBox{\n"
-"	background: white;\n"
+"	background: #e6e6fa;\n"
 "	border: none;\n"
 "	min-width: 2em;\n"
 "	color: #2C0146;\n"
@@ -207,7 +213,7 @@ class Ui_SANDIASALUD(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView{\n"
-"	background: white;\n"
+"	background: #e6e6fa;\n"
 "	border: none;\n"
 "	color: #2C0146;\n"
 "}\n"
@@ -223,16 +229,16 @@ class Ui_SANDIASALUD(object):
 "}\n"
 "\n"
 "QLineEdit, QTextEdit{\n"
-"	background: white;\n"
+"	background: #e6e6fa;\n"
 "	color:	#2C0146;\n"
 "	border: none;\n"
-"	border-bottom: 2px solid "
-                        "#2C0146;\n"
+"	border-bottom: 2px "
+                        "solid #2C0146;\n"
 "}\n"
 "\n"
 "QLineEdit:disabled, QTextEdit:disabled,QPushButton:disabled,QDateEdit:disabled{\n"
-"	background: rgb(235, 235, 235);\n"
-"	border-color: rgb(235, 235, 235);\n"
+"	background: rgb(205, 205, 205);\n"
+"	border-color: rgb(205, 205, 205);\n"
 "}\n"
 "\n"
 "QLineEdit:focus, QTextEdit:focus{\n"
@@ -243,7 +249,7 @@ class Ui_SANDIASALUD(object):
 "QDateEdit,QDateTimeEdit{\n"
 "	padding-right:1em;\n"
 "	min-width: 6em;\n"
-"	background: white;\n"
+"	background: #e6e6fa;\n"
 "	color: #2C0146;\n"
 "	border: none;\n"
 "	border-bottom: 2px solid #2C0146;\n"
@@ -277,8 +283,8 @@ class Ui_SANDIASALUD(object):
 "}\n"
 "\n"
 "QScrollBar:vertical {\n"
-"        bo"
-                        "rder: 1px solid white;\n"
+"  "
+                        "      border: 1px solid white;\n"
 "        width:10px;\n"
 "        margin: 0px 0px 0px 0px;\n"
 "}\n"
@@ -300,6 +306,21 @@ class Ui_SANDIASALUD(object):
 "Line{\n"
 "	background: #2C0146;\n"
 "}\n"
+"\n"
+"QTableWidget {\n"
+"	border: 2px solid #2C0146;\n"
+"	border-radius: 5px;\n"
+"	selection-color: 2C0146;\n"
+"	selection-background: 60029a;\n"
+"}\n"
+"\n"
+"QTableWidget::item{\n"
+"	color:60029a;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected{\n"
+"	color:2C0146;\n"
+"}\n"
 "/*\n"
 "#2C0146;\n"
 "#60029a;\n"
@@ -310,6 +331,32 @@ class Ui_SANDIASALUD(object):
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.gridLayout_3 = QGridLayout()
         self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.gridLayout_7 = QGridLayout()
+        self.gridLayout_7.setObjectName(u"gridLayout_7")
+        self.gridLayout_7.setHorizontalSpacing(24)
+        self.gridLayout_7.setContentsMargins(-1, -1, 0, -1)
+        self.date_cita_desde = QDateEdit(self.widget_citas)
+        self.date_cita_desde.setObjectName(u"date_cita_desde")
+        self.date_cita_desde.setCalendarPopup(True)
+
+        self.gridLayout_7.addWidget(self.date_cita_desde, 1, 1, 1, 1)
+
+        self.label_21 = QLabel(self.widget_citas)
+        self.label_21.setObjectName(u"label_21")
+
+        self.gridLayout_7.addWidget(self.label_21, 0, 1, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+
+        self.label_22 = QLabel(self.widget_citas)
+        self.label_22.setObjectName(u"label_22")
+
+        self.gridLayout_7.addWidget(self.label_22, 2, 1, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+
+        self.date_cita_hasta = QDateEdit(self.widget_citas)
+        self.date_cita_hasta.setObjectName(u"date_cita_hasta")
+        self.date_cita_hasta.setCalendarPopup(True)
+
+        self.gridLayout_7.addWidget(self.date_cita_hasta, 3, 1, 1, 1)
+
         self.boton_buscar_cita = QPushButton(self.widget_citas)
         self.boton_buscar_cita.setObjectName(u"boton_buscar_cita")
         self.boton_buscar_cita.setCursor(QCursor(Qt.PointingHandCursor))
@@ -317,26 +364,33 @@ class Ui_SANDIASALUD(object):
         icon1 = QIcon(QIcon.fromTheme(u"system-search"))
         self.boton_buscar_cita.setIcon(icon1)
 
-        self.gridLayout_3.addWidget(self.boton_buscar_cita, 0, 2, 1, 1)
+        self.gridLayout_7.addWidget(self.boton_buscar_cita, 1, 2, 2, 1, Qt.AlignmentFlag.AlignVCenter)
 
-        self.fecha_buscar_cita = QDateEdit(self.widget_citas)
-        self.fecha_buscar_cita.setObjectName(u"fecha_buscar_cita")
-        self.fecha_buscar_cita.setCursor(QCursor(Qt.PointingHandCursor))
-        self.fecha_buscar_cita.setStyleSheet(u"")
-        self.fecha_buscar_cita.setCalendarPopup(True)
+        self.check_rango_cita = QCheckBox(self.widget_citas)
+        self.check_rango_cita.setObjectName(u"check_rango_cita")
 
-        self.gridLayout_3.addWidget(self.fecha_buscar_cita, 0, 1, 1, 1)
+        self.gridLayout_7.addWidget(self.check_rango_cita, 0, 2, 1, 1)
 
-        self.boton_v_agendar = QPushButton(self.widget_citas)
-        self.boton_v_agendar.setObjectName(u"boton_v_agendar")
-        self.boton_v_agendar.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.gridLayout_3.addWidget(self.boton_v_agendar, 0, 0, 1, 1)
+        self.gridLayout_3.addLayout(self.gridLayout_7, 0, 0, 1, 3)
 
-        self.lista_citas = QListWidget(self.widget_citas)
-        self.lista_citas.setObjectName(u"lista_citas")
+        self.tabla_citas = QTableWidget(self.widget_citas)
+        if (self.tabla_citas.columnCount() < 5):
+            self.tabla_citas.setColumnCount(5)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tabla_citas.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tabla_citas.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tabla_citas.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tabla_citas.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.tabla_citas.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        self.tabla_citas.setObjectName(u"tabla_citas")
+        self.tabla_citas.setStyleSheet(u"")
 
-        self.gridLayout_3.addWidget(self.lista_citas, 1, 0, 1, 3)
+        self.gridLayout_3.addWidget(self.tabla_citas, 1, 0, 1, 3)
 
 
         self.verticalLayout_5.addLayout(self.gridLayout_3)
@@ -425,7 +479,7 @@ class Ui_SANDIASALUD(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, -154, 592, 1373))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 242, 1373))
         self.verticalLayout_6 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.contenedor_buscador = QWidget(self.scrollAreaWidgetContents)
@@ -852,7 +906,7 @@ class Ui_SANDIASALUD(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 592, 987))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 232, 987))
         self.verticalLayout_13 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.gridLayout_5 = QGridLayout()
@@ -1075,7 +1129,7 @@ class Ui_SANDIASALUD(object):
 
         self.retranslateUi(SANDIASALUD)
 
-        self.stacked_widget.setCurrentIndex(5)
+        self.stacked_widget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(SANDIASALUD)
@@ -1085,6 +1139,8 @@ class Ui_SANDIASALUD(object):
         SANDIASALUD.setWindowTitle(QCoreApplication.translate("SANDIASALUD", u"SANDIA SALUD", None))
         self.boton_v_consulta.setText(QCoreApplication.translate("SANDIASALUD", u"CONSULTA", None))
         self.boton_v_citas.setText(QCoreApplication.translate("SANDIASALUD", u"CITAS", None))
+        self.boton_v_agendar.setText(QCoreApplication.translate("SANDIASALUD", u"AGENDAR\n"
+"CITAS", None))
         self.boton_v_pacientes.setText(QCoreApplication.translate("SANDIASALUD", u"PACIENTES", None))
         self.boton_v_registrar_pacientes.setText(QCoreApplication.translate("SANDIASALUD", u"REGISTRAR\n"
 "PACIENTES", None))
@@ -1092,8 +1148,20 @@ class Ui_SANDIASALUD(object):
         self.boton_v_configuracion.setText(QCoreApplication.translate("SANDIASALUD", u"CONFIGURACI\u00d3N", None))
         self.boton_registrar_usuarios.setText(QCoreApplication.translate("SANDIASALUD", u"REGISTRAR USUARIOS", None))
         self.boton_v_cerrar_sesion.setText(QCoreApplication.translate("SANDIASALUD", u"CERRAR SESI\u00d3N", None))
+        self.label_21.setText(QCoreApplication.translate("SANDIASALUD", u"DESDE:", None))
+        self.label_22.setText(QCoreApplication.translate("SANDIASALUD", u"HASTA:", None))
         self.boton_buscar_cita.setText(QCoreApplication.translate("SANDIASALUD", u"BUSCAR", None))
-        self.boton_v_agendar.setText(QCoreApplication.translate("SANDIASALUD", u"AGENDAR", None))
+        self.check_rango_cita.setText(QCoreApplication.translate("SANDIASALUD", u"BUSCAR POR RANGO", None))
+        ___qtablewidgetitem = self.tabla_citas.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("SANDIASALUD", u"NACIONALIDAD", None));
+        ___qtablewidgetitem1 = self.tabla_citas.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("SANDIASALUD", u"CEDULA", None));
+        ___qtablewidgetitem2 = self.tabla_citas.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("SANDIASALUD", u"NOMBRE", None));
+        ___qtablewidgetitem3 = self.tabla_citas.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("SANDIASALUD", u"APELLIDO", None));
+        ___qtablewidgetitem4 = self.tabla_citas.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("SANDIASALUD", u"FECHA", None));
         self.line_apellido.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"APELLIDOS", None))
         self.boton_registrar.setText(QCoreApplication.translate("SANDIASALUD", u"REGISTRAR", None))
         self.line_telefono.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"TELEFONO", None))
