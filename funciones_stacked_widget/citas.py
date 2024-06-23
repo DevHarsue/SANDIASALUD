@@ -35,7 +35,7 @@ class VistaCitas:
             self.ui.tabla_citas.setItem(i,1,QTableWidgetItem(str(x[2])))
             self.ui.tabla_citas.setItem(i,2,QTableWidgetItem(str(x[3])))
             self.ui.tabla_citas.setItem(i,3,QTableWidgetItem(str(x[4])))
-            self.ui.tabla_citas.setItem(i,4,QTableWidgetItem(str(x[5].strftime("%d/%M/%Y  %H:%M:%S"))))
+            self.ui.tabla_citas.setItem(i,4,QTableWidgetItem(str(x[5].strftime("%d/%m/%Y  %H:%M:%S"))))
     
     def cambiar_busqueda(self,estado):
         if estado == 0:

@@ -17,13 +17,13 @@ class VistaAgendarCita:
         self.ui.date_agenda.setDateTime(QDateTime(2024,1,1,14,0,0))
         self.ui.combo_nacionalidad_agenda.currentIndexChanged.connect(self.reiniciar_paciente)
         self.ui.line_cedula_agenda.textChanged.connect(self.reiniciar_paciente)
+        
     
     def reiniciar_paciente(self):
         self.ui.line_nombre_agenda.setText("")
         self.ui.line_apellido_agenda.setText("")
     
     def buscar_paciente(self):
-        self.ui.stacked_widget
         tabla_paciente = TablaPacientes()
         nacionalidad = self.ui.combo_nacionalidad_agenda.currentText()
         cedula = self.ui.line_cedula_agenda.text()

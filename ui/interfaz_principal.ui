@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>SANDIASALUD</class>
  <widget class="QMainWindow" name="SANDIASALUD">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -35,7 +38,7 @@
 }
 
 #contenedor_principal{
-	background: #e6e6fa;
+	background: white;
 	border-radius: 1em;
 	
 }
@@ -195,13 +198,6 @@ border:none;</string>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="boton_registrar_usuarios">
-            <property name="text">
-             <string>REGISTRAR USUARIOS</string>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QPushButton" name="boton_v_cerrar_sesion">
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
@@ -241,7 +237,7 @@ QCheckBox::indicator:unchecked{
 }
 
 QComboBox{
-	background: #e6e6fa;
+	background: white;
 	border: none;
 	min-width: 2em;
 	color: #2C0146;
@@ -252,7 +248,7 @@ QComboBox:focus{
 }
 
 QComboBox QAbstractItemView{
-	background: #e6e6fa;
+	background: white;
 	border: none;
 	color: #2C0146;
 }
@@ -268,13 +264,13 @@ QComboBox QAbstractItemView::item:selected {
 }
 
 QLineEdit, QTextEdit{
-	background: #e6e6fa;
+	background: white;
 	color:	#2C0146;
 	border: none;
 	border-bottom: 2px solid #2C0146;
 }
 
-QLineEdit:disabled, QTextEdit:disabled,QPushButton:disabled,QDateEdit:disabled{
+QLineEdit:disabled, QTextEdit:disabled,QPushButton:disabled,QDateEdit:disabled,QDateTimeEdit:disabled{
 	background: rgb(205, 205, 205);
 	border-color: rgb(205, 205, 205);
 }
@@ -287,7 +283,7 @@ QLineEdit:focus, QTextEdit:focus{
 QDateEdit,QDateTimeEdit{
 	padding-right:1em;
 	min-width: 6em;
-	background: #e6e6fa;
+	background: white;
 	color: #2C0146;
 	border: none;
 	border-bottom: 2px solid #2C0146;
@@ -362,7 +358,7 @@ QTableView QHeaderView{
 </string>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="widget_citas">
           <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -532,36 +528,6 @@ QTableView QHeaderView{
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
             <layout class="QGridLayout" name="gridLayout_2">
-             <item row="1" column="2">
-              <widget class="QLineEdit" name="line_apellido">
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-               <property name="placeholderText">
-                <string>APELLIDOS</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
-              <widget class="QPushButton" name="boton_registrar">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string>REGISTRAR</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
-              <widget class="QLineEdit" name="line_telefono">
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-               <property name="placeholderText">
-                <string>TELEFONO</string>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
               <widget class="QLineEdit" name="line_cedula">
                <property name="alignment">
@@ -572,13 +538,43 @@ QTableView QHeaderView{
                </property>
               </widget>
              </item>
-             <item row="2" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
-              <widget class="QDateEdit" name="fecha_nacimiento">
+             <item row="6" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QPushButton" name="boton_registrar">
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
-               <property name="calendarPopup">
+               <property name="text">
+                <string>REGISTRAR</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QLineEdit" name="line_apellido">
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>APELLIDOS</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="line_nombre">
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>NOMBRES</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1" colspan="2">
+              <widget class="QTextEdit" name="text_direccion">
+               <property name="tabChangesFocus">
                 <bool>true</bool>
+               </property>
+               <property name="placeholderText">
+                <string>DIRECCIÓN</string>
                </property>
               </widget>
              </item>
@@ -599,23 +595,33 @@ QTableView QHeaderView{
                </item>
               </widget>
              </item>
-             <item row="1" column="1">
-              <widget class="QLineEdit" name="line_nombre">
+             <item row="4" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QLineEdit" name="line_telefono">
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignCenter</set>
                </property>
                <property name="placeholderText">
-                <string>NOMBRES</string>
+                <string>TELEFONO</string>
                </property>
               </widget>
              </item>
-             <item row="4" column="1" colspan="2">
-              <widget class="QTextEdit" name="text_direccion">
-               <property name="tabChangesFocus">
+             <item row="3" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QDateEdit" name="fecha_nacimiento">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="calendarPopup">
                 <bool>true</bool>
                </property>
-               <property name="placeholderText">
-                <string>DIRECCIÓN</string>
+              </widget>
+             </item>
+             <item row="2" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignVCenter">
+              <widget class="QLabel" name="label_20">
+               <property name="text">
+                <string>FECHA DE NACIMIENTO:</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
                </property>
               </widget>
              </item>
@@ -628,7 +634,7 @@ QTableView QHeaderView{
            <item>
             <widget class="QLabel" name="label_16">
              <property name="styleSheet">
-              <string notr="true">image:url(&quot;images/logo_completo.png&quot;)</string>
+              <string notr="true">image:url(&quot;images/logo_completo.jpeg&quot;)</string>
              </property>
              <property name="text">
               <string/>
@@ -651,9 +657,9 @@ QTableView QHeaderView{
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>0</y>
-                <width>242</width>
-                <height>1373</height>
+                <y>-993</y>
+                <width>592</width>
+                <height>1407</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -710,62 +716,10 @@ QTableView QHeaderView{
                <item>
                 <widget class="QWidget" name="contenedor_datos" native="true">
                  <layout class="QGridLayout" name="contenedor_datos_personales">
-                  <item row="1" column="1">
-                   <widget class="QLineEdit" name="line_apellido_editar">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignmentFlag::AlignCenter</set>
-                    </property>
-                    <property name="placeholderText">
-                     <string>APELLIDO</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0" colspan="2">
-                   <widget class="QCheckBox" name="check_datos_personales">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="text">
-                     <string>EDITAR DATOS PERSONALES</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="2" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
                    <widget class="QLabel" name="label_9">
                     <property name="text">
                      <string>FECHA DE NACIMIENTO:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
-                   <widget class="QDateEdit" name="date_fecha_nacimiento">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="calendarPopup">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
-                   <widget class="QLineEdit" name="line_telefono_editar">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignmentFlag::AlignCenter</set>
-                    </property>
-                    <property name="placeholderText">
-                     <string>TELEFONO</string>
                     </property>
                    </widget>
                   </item>
@@ -782,6 +736,19 @@ QTableView QHeaderView{
                     </property>
                    </widget>
                   </item>
+                  <item row="4" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QLineEdit" name="line_telefono_editar">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignmentFlag::AlignCenter</set>
+                    </property>
+                    <property name="placeholderText">
+                     <string>TELEFONO</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="5" column="0" colspan="2">
                    <widget class="QTextEdit" name="text_direccion_editar">
                     <property name="enabled">
@@ -793,8 +760,50 @@ QTableView QHeaderView{
                       <height>80</height>
                      </size>
                     </property>
+                    <property name="tabChangesFocus">
+                     <bool>true</bool>
+                    </property>
                     <property name="placeholderText">
                      <string>DIRECCION</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="line_apellido_editar">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignmentFlag::AlignCenter</set>
+                    </property>
+                    <property name="placeholderText">
+                     <string>APELLIDO</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter">
+                   <widget class="QDateEdit" name="date_fecha_nacimiento">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="calendarPopup">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0" colspan="2">
+                   <widget class="QCheckBox" name="check_datos_personales">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="text">
+                     <string>EDITAR DATOS PERSONALES</string>
                     </property>
                    </widget>
                   </item>
@@ -825,7 +834,7 @@ QTableView QHeaderView{
                    </widget>
                   </item>
                   <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                   <widget class="QDateEdit" name="date_proxima_cita">
+                   <widget class="QDateTimeEdit" name="date_proxima_cita">
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
@@ -881,6 +890,9 @@ QTableView QHeaderView{
                       <height>80</height>
                      </size>
                     </property>
+                    <property name="tabChangesFocus">
+                     <bool>true</bool>
+                    </property>
                     <property name="placeholderText">
                      <string>DIAGNOSTICO</string>
                     </property>
@@ -903,6 +915,9 @@ QTableView QHeaderView{
                       <width>0</width>
                       <height>80</height>
                      </size>
+                    </property>
+                    <property name="tabChangesFocus">
+                     <bool>true</bool>
                     </property>
                     <property name="placeholderText">
                      <string>TRATAMIENTO</string>
@@ -953,6 +968,9 @@ QTableView QHeaderView{
                       <height>80</height>
                      </size>
                     </property>
+                    <property name="tabChangesFocus">
+                     <bool>true</bool>
+                    </property>
                     <property name="placeholderText">
                      <string>ANTECEDENTES PATOLOGICOS</string>
                     </property>
@@ -975,6 +993,9 @@ QTableView QHeaderView{
                       <width>0</width>
                       <height>80</height>
                      </size>
+                    </property>
+                    <property name="tabChangesFocus">
+                     <bool>true</bool>
                     </property>
                     <property name="placeholderText">
                      <string>ANTECEDENTES QUIRURJICOS</string>
@@ -999,6 +1020,9 @@ QTableView QHeaderView{
                       <height>80</height>
                      </size>
                     </property>
+                    <property name="tabChangesFocus">
+                     <bool>true</bool>
+                    </property>
                     <property name="placeholderText">
                      <string>TRATAMIENTO</string>
                     </property>
@@ -1007,7 +1031,7 @@ QTableView QHeaderView{
                   <item alignment="Qt::AlignmentFlag::AlignHCenter">
                    <widget class="QLabel" name="label_7">
                     <property name="text">
-                     <string>ULTIMA RELACION:</string>
+                     <string>PRIMERA RELACION SEXUAL:</string>
                     </property>
                    </widget>
                   </item>
@@ -1044,6 +1068,9 @@ QTableView QHeaderView{
                    <widget class="QCheckBox" name="check_embarazo">
                     <property name="enabled">
                      <bool>false</bool>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
                     </property>
                     <property name="text">
                      <string>EDITAR DATOS DE EMBARAZO</string>
@@ -1093,6 +1120,13 @@ QTableView QHeaderView{
                  </layout>
                 </widget>
                </item>
+               <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                <widget class="QPushButton" name="boton_borrar_paciente">
+                 <property name="text">
+                  <string>BORRAR PACIENTE</string>
+                 </property>
+                </widget>
+               </item>
               </layout>
              </widget>
             </widget>
@@ -1137,6 +1171,20 @@ QTableView QHeaderView{
               <widget class="QLabel" name="label_14">
                <property name="text">
                 <string>ANTECEDENTES</string>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignmentFlag::AlignHCenter">
+              <widget class="QLabel" name="label_17">
+               <property name="text">
+                <string>PRIMERA RELACIÓN SEXUAL :</string>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+              <widget class="QDateEdit" name="date_primera_relacion">
+               <property name="calendarPopup">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -1319,9 +1367,9 @@ QTableView QHeaderView{
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>0</y>
-                <width>232</width>
-                <height>987</height>
+                <y>-171</y>
+                <width>592</width>
+                <height>587</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1329,7 +1377,36 @@ QTableView QHeaderView{
                 <layout class="QGridLayout" name="gridLayout_5">
                  <item row="5" column="0" colspan="4">
                   <widget class="QWidget" name="consulta_antecedentes" native="true">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="baseSize">
+                    <size>
+                     <width>0</width>
+                     <height>0</height>
+                    </size>
+                   </property>
                    <layout class="QVBoxLayout" name="verticalLayout_14">
+                    <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                     <widget class="QLabel" name="label_10">
+                      <property name="text">
+                       <string>PRIMERA RELACIÓN SEXUAL:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                     <widget class="QDateEdit" name="date_primera_relacion_consulta">
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="calendarPopup">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
                     <item>
                      <widget class="QLabel" name="label_11">
                       <property name="text">
@@ -1344,6 +1421,9 @@ QTableView QHeaderView{
                         <width>0</width>
                         <height>80</height>
                        </size>
+                      </property>
+                      <property name="tabChangesFocus">
+                       <bool>true</bool>
                       </property>
                       <property name="placeholderText">
                        <string>ANTECEDENTES PATOLOGICOS</string>
@@ -1365,6 +1445,9 @@ QTableView QHeaderView{
                         <height>80</height>
                        </size>
                       </property>
+                      <property name="tabChangesFocus">
+                       <bool>true</bool>
+                      </property>
                       <property name="placeholderText">
                        <string>ANTECEDENTES QUIRURJICOS</string>
                       </property>
@@ -1385,19 +1468,15 @@ QTableView QHeaderView{
                         <height>80</height>
                        </size>
                       </property>
+                      <property name="tabChangesFocus">
+                       <bool>true</bool>
+                      </property>
                       <property name="placeholderText">
                        <string>TRATAMIENTO ACTUAL</string>
                       </property>
                      </widget>
                     </item>
                    </layout>
-                  </widget>
-                 </item>
-                 <item row="7" column="0" colspan="4" alignment="Qt::AlignmentFlag::AlignHCenter">
-                  <widget class="QLabel" name="label_10">
-                   <property name="text">
-                    <string>FECHA RELACIONES:</string>
-                   </property>
                   </widget>
                  </item>
                  <item row="10" column="0" colspan="4">
@@ -1407,6 +1486,9 @@ QTableView QHeaderView{
                      <width>0</width>
                      <height>80</height>
                     </size>
+                   </property>
+                   <property name="tabChangesFocus">
+                    <bool>true</bool>
                    </property>
                    <property name="placeholderText">
                     <string>TRATAMIENTO</string>
@@ -1436,13 +1518,14 @@ QTableView QHeaderView{
                  <item row="4" column="0" colspan="4" alignment="Qt::AlignmentFlag::AlignHCenter">
                   <widget class="QPushButton" name="boton_ver_antecedentes">
                    <property name="enabled">
-                    <bool>false</bool>
+                    <bool>true</bool>
                    </property>
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="text">
-                    <string>VER ANTECEDENTES</string>
+                    <string>VER/EDITAR
+ANTECEDENTES</string>
                    </property>
                   </widget>
                  </item>
@@ -1470,16 +1553,6 @@ QTableView QHeaderView{
                   <widget class="Line" name="line_8">
                    <property name="orientation">
                     <enum>Qt::Orientation::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="8" column="0" colspan="4" alignment="Qt::AlignmentFlag::AlignHCenter">
-                  <widget class="QDateEdit" name="dateEdit">
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
-                   </property>
-                   <property name="calendarPopup">
-                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -1521,6 +1594,9 @@ QTableView QHeaderView{
                      <height>80</height>
                     </size>
                    </property>
+                   <property name="tabChangesFocus">
+                    <bool>true</bool>
+                   </property>
                    <property name="placeholderText">
                     <string>DIAGNOSTICO</string>
                    </property>
@@ -1536,7 +1612,7 @@ QTableView QHeaderView{
                 </layout>
                </item>
                <item>
-                <widget class="QCheckBox" name="checkBox">
+                <widget class="QCheckBox" name="check_proxima_cita_consulta">
                  <property name="cursor">
                   <cursorShape>PointingHandCursor</cursorShape>
                  </property>
@@ -1546,7 +1622,10 @@ QTableView QHeaderView{
                 </widget>
                </item>
                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                <widget class="QDateEdit" name="dateEdit_2">
+                <widget class="QDateTimeEdit" name="date_proxima_cita_consulta">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
                  <property name="cursor">
                   <cursorShape>PointingHandCursor</cursorShape>
                  </property>
@@ -1563,7 +1642,7 @@ QTableView QHeaderView{
                 </widget>
                </item>
                <item>
-                <widget class="QCheckBox" name="checkBox_2">
+                <widget class="QCheckBox" name="check_embarazo_consulta">
                  <property name="cursor">
                   <cursorShape>PointingHandCursor</cursorShape>
                  </property>
@@ -1584,6 +1663,9 @@ QTableView QHeaderView{
                   </item>
                   <item alignment="Qt::AlignmentFlag::AlignHCenter">
                    <widget class="QDateEdit" name="date_consulta_ultima_regla">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
@@ -1601,6 +1683,9 @@ QTableView QHeaderView{
                   </item>
                   <item alignment="Qt::AlignmentFlag::AlignHCenter">
                    <widget class="QDateEdit" name="date_consulta_parto">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>

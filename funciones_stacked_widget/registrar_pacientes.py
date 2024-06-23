@@ -45,7 +45,7 @@ class VistaRegistrarPacientes:
             self.ventana.mostrar_mensajes("Telefono erroneo","El telefono debe ser de minimo 10 digitos")
             return 0
         
-        self.tabla.insert(nacionalidad,cedula,nombre,apellido,fecha,telefono,direccion)
+        self.tabla.insert(nacionalidad,cedula,nombre,apellido,fecha,direccion,telefono)
         self.ui.stacked_widget.setCurrentIndex(self.index if self.index!=-1 else 2)
         self.ventana.mostrar_mensajes("REGISTRO EXISTOSO","Paciente registrado exitosamente.")
         self.reiniciar_datos()

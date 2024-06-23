@@ -10,10 +10,16 @@ class TablaPacientes(Tabla):
 class TablaAntecedentes(Tabla):
     def __init__(self):
         super().__init__("antecedentes")
+    
+    def select_antecedente_paciente(self,id_paciente):
+        return self.bd.consultar(f"SELECT * FROM antecedentes WHERE id_paciente={id_paciente};")
 
 class TablaEmbarazos(Tabla):
     def __init__(self):
         super().__init__("embarazos")
+    
+    def select_citas_paciente(self,id_paciente):
+        return self.bd.consultar(f"SELECT * FROM embarazos WHERE id_paciente={id_paciente};")
         
 class TablaCitas(Tabla):
     def __init__(self):
@@ -28,6 +34,9 @@ class TablaCitas(Tabla):
 class TablaConsultas(Tabla):
     def __init__(self):
         super().__init__("consultas") 
+    
+    def select_consultas_paciente(self,id_paciente):
+        return self.bd.consultar(f"SELECT * FROM consultas WHERE id_paciente={id_paciente} ORDER BY id_consulta DESC LIMIT 1;")
 
 class TablaUsuarios(Tabla):
     def __init__(self):

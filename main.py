@@ -3,6 +3,9 @@ from interfaz.interfaz_inicio import Ui_Login
 from funciones_stacked_widget.registrar_pacientes import VistaRegistrarPacientes
 from funciones_stacked_widget.agendar_cita import VistaAgendarCita
 from funciones_stacked_widget.citas import VistaCitas
+from funciones_stacked_widget.consulta import VistaConsulta
+from funciones_stacked_widget.antecedentes import VistaAntecedentes
+from funciones_stacked_widget.pacientes import VistaPacientes
 from validaciones.hash import convertir_texto_hash
 from bd.tablas import TablaUsuarios
 
@@ -20,6 +23,9 @@ class VentanaPrincipal(QMainWindow):
         self.vista_registrar_pacientes = VistaRegistrarPacientes(self)
         self.vista_cita = VistaCitas(self)
         self.vista_agendar_cita = VistaAgendarCita(self)
+        self.vista_consulta = VistaConsulta(self)
+        self.vista_antecedentes = VistaAntecedentes(self)
+        self.vista_pacientes = VistaPacientes(self)
         
     
     def asignar_slots_vistas(self):
@@ -81,9 +87,9 @@ class VentanaIniciarSesion(QMainWindow):
         self.cambiar_ventana(usuario[0][3:])
         
     def cambiar_ventana(self,permisos):
+        self.close()
         self.venta_principal = VentanaPrincipal(permisos)
         self.venta_principal.show()
-        self.close()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
