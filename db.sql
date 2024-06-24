@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `consultas` (
   `id_paciente` int(11) NOT NULL,
   `diagnostico` text DEFAULT NULL,
   `tratamiento` text DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
   PRIMARY KEY (`id_consulta`) USING BTREE,
   KEY `FK__pacientes` (`id_paciente`) USING BTREE,
   CONSTRAINT `FK_consultas_pacientes` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`) ON DELETE NO ACTION ON UPDATE CASCADE

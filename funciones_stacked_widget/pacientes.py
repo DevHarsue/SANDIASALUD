@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QMessageBox
 from bd.tablas import TablaCitas,TablaPacientes,TablaConsultas,TablaEmbarazos,TablaAntecedentes
 from validaciones.validaciones_textos import Validador
 
+
 class VistaPacientes:
     def __init__(self,ventana):
         self.ventana = ventana
@@ -63,73 +64,73 @@ class VistaPacientes:
                 self.ui.stacked_widget.setCurrentWidget(self.ui.widget_registrar_pacientes)
                 self.ui.line_cedula.setText(cedula)
                 self.ui.nacionalidad.setCurrentIndex(self.ui.combo_nacionalidad.currentIndex())
-                return 0
+            return 0
+    
+        self.ui.check_datos_personales.setDisabled(False)
+        self.paciente = self.paciente[0]
+        self.ui.line_nombre_editar.setText(self.paciente[3])
+        self.ui.line_apellido_editar.setText(self.paciente[4])
+        año = int(self.paciente[5].strftime("%Y"))
+        mes = int(self.paciente[5].strftime("%m"))
+        dia = int(self.paciente[5].strftime("%d"))
+        self.ui.date_fecha_nacimiento.setDate(QDate(año,mes,dia))
+        self.ui.text_direccion_editar.setText(self.paciente[6])
+        self.ui.line_telefono_editar.setText(self.paciente[7])
+        
+        tabla = TablaCitas()
+        cita = tabla.select_citas_paciente(str(self.paciente[0]))
+        if bool(cita):
+            cita = cita[0]
+            año = int(cita[1].strftime("%Y"))
+            mes = int(cita[1].strftime("%m"))
+            dia = int(cita[1].strftime("%d"))
+            hora = int(cita[1].strftime("%H"))
+            min = int(cita[1].strftime("%M"))
+            self.ui.date_proxima_cita.setDateTime(QDateTime(año,mes,dia,hora,min,0))
+            self.ui.check_proxima_cita.setDisabled(False)
         else:
-            self.ui.check_datos_personales.setDisabled(False)
-            self.paciente = self.paciente[0]
-            self.ui.line_nombre_editar.setText(self.paciente[3])
-            self.ui.line_apellido_editar.setText(self.paciente[4])
-            año = int(self.paciente[5].strftime("%Y"))
-            mes = int(self.paciente[5].strftime("%m"))
-            dia = int(self.paciente[5].strftime("%d"))
-            self.ui.date_fecha_nacimiento.setDate(QDate(año,mes,dia))
-            self.ui.text_direccion_editar.setText(self.paciente[6])
-            self.ui.line_telefono_editar.setText(self.paciente[7])
+            self.ui.check_proxima_cita.setDisabled(True)
+        
+        tabla = TablaConsultas()
+        consulta = tabla.select_consultas_paciente(str(self.paciente[0]))
+        if bool(consulta):
+            consulta = consulta[0]
+            self.ui.text_diagnostico.setText(consulta[2])
+            self.ui.text_tratamiento_consulta.setText(consulta[3])
+            self.ui.check_consulta.setDisabled(False)
+        else:
+            self.ui.check_consulta.setDisabled(True)
             
-            tabla = TablaCitas()
-            cita = tabla.select_citas_paciente(str(self.paciente[0]))
-            if bool(cita):
-                cita = cita[0]
-                año = int(cita[1].strftime("%Y"))
-                mes = int(cita[1].strftime("%m"))
-                dia = int(cita[1].strftime("%d"))
-                hora = int(cita[1].strftime("%H"))
-                min = int(cita[1].strftime("%M"))
-                self.ui.date_proxima_cita.setDateTime(QDateTime(año,mes,dia,hora,min,0))
-                self.ui.check_proxima_cita.setDisabled(False)
-            else:
-                self.ui.check_proxima_cita.setDisabled(True)
-            
-            tabla = TablaConsultas()
-            consulta = tabla.select_consultas_paciente(str(self.paciente[0]))
-            if bool(consulta):
-                consulta = consulta[0]
-                self.ui.text_diagnostico.setText(consulta[2])
-                self.ui.text_tratamiento_consulta.setText(consulta[3])
-                self.ui.check_consulta.setDisabled(False)
-            else:
-                self.ui.check_consulta.setDisabled(True)
-                
-            tabla = TablaAntecedentes()
-            antecedentes = tabla.select_antecedente_paciente(str(self.paciente[0]))
-            if bool(antecedentes):
-                antecedentes = antecedentes[0]
-                self.ui.text_patologicos.setText(antecedentes[1])
-                self.ui.text_quirurjicos.setText(antecedentes[2])
-                self.ui.text_tratamiento.setText(antecedentes[3])
-                año = int(antecedentes[4].strftime("%Y"))
-                mes = int(antecedentes[4].strftime("%m"))
-                dia = int(antecedentes[4].strftime("%d")) 
-                self.ui.date_relaciones.setDate(QDate(año,mes,dia))
-                self.ui.check_antecedentes.setDisabled(False)
-            else:
-                self.ui.check_antecedentes.setDisabled(True)
-            
-            tabla = TablaEmbarazos()
-            embarazo = tabla.select_citas_paciente(str(self.paciente[0]))
-            if bool(embarazo):
-                embarazo = embarazo[0]
-                año = int(embarazo[1].strftime("%Y"))
-                mes = int(embarazo[1].strftime("%m"))
-                dia = int(embarazo[1].strftime("%d"))
-                self.ui.date_ultima_regla.setDate(QDate(año,mes,dia))
-                año = int(embarazo[2].strftime("%Y"))
-                mes = int(embarazo[2].strftime("%m"))
-                dia = int(embarazo[2].strftime("%d"))
-                self.ui.date_parto.setDate(QDate(año,mes,dia))
-                self.ui.check_embarazo.setDisabled(False)
-            else:
-                self.ui.check_embarazo.setDisabled(True)
+        tabla = TablaAntecedentes()
+        antecedentes = tabla.select_antecedente_paciente(str(self.paciente[0]))
+        if bool(antecedentes):
+            antecedentes = antecedentes[0]
+            self.ui.text_patologicos.setText(antecedentes[1])
+            self.ui.text_quirurjicos.setText(antecedentes[2])
+            self.ui.text_tratamiento.setText(antecedentes[3])
+            año = int(antecedentes[4].strftime("%Y"))
+            mes = int(antecedentes[4].strftime("%m"))
+            dia = int(antecedentes[4].strftime("%d")) 
+            self.ui.date_relaciones.setDate(QDate(año,mes,dia))
+            self.ui.check_antecedentes.setDisabled(False)
+        else:
+            self.ui.check_antecedentes.setDisabled(True)
+        
+        tabla = TablaEmbarazos()
+        embarazo = tabla.select_citas_paciente(str(self.paciente[0]))
+        if bool(embarazo):
+            embarazo = embarazo[0]
+            año = int(embarazo[1].strftime("%Y"))
+            mes = int(embarazo[1].strftime("%m"))
+            dia = int(embarazo[1].strftime("%d"))
+            self.ui.date_ultima_regla.setDate(QDate(año,mes,dia))
+            año = int(embarazo[2].strftime("%Y"))
+            mes = int(embarazo[2].strftime("%m"))
+            dia = int(embarazo[2].strftime("%d"))
+            self.ui.date_parto.setDate(QDate(año,mes,dia))
+            self.ui.check_embarazo.setDisabled(False)
+        else:
+            self.ui.check_embarazo.setDisabled(True)
     
     def cambiar_datos_personales(self):
         estado =not bool(self.ui.check_datos_personales.isChecked())

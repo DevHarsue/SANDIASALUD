@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QMessageBox
 from bd.tablas import TablaPacientes,TablaCitas
 from validaciones.validaciones_textos import Validador
 
+
 class VistaAgendarCita:
     def __init__(self,ventana):
         self.ventana = ventana

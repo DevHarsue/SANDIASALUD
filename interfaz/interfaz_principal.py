@@ -131,6 +131,12 @@ class Ui_SANDIASALUD(object):
 
         self.verticalLayout_2.addWidget(self.boton_v_registrar_pacientes)
 
+        self.boton_v_consultas = QPushButton(self.widget_menu)
+        self.boton_v_consultas.setObjectName(u"boton_v_consultas")
+        self.boton_v_consultas.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.verticalLayout_2.addWidget(self.boton_v_consultas)
+
 
         self.gridLayout.addWidget(self.widget_menu, 1, 0, 1, 1, Qt.AlignmentFlag.AlignTop)
 
@@ -331,6 +337,7 @@ class Ui_SANDIASALUD(object):
         self.gridLayout_7.setContentsMargins(-1, -1, 0, -1)
         self.date_cita_desde = QDateEdit(self.widget_citas)
         self.date_cita_desde.setObjectName(u"date_cita_desde")
+        self.date_cita_desde.setCursor(QCursor(Qt.PointingHandCursor))
         self.date_cita_desde.setCalendarPopup(True)
 
         self.gridLayout_7.addWidget(self.date_cita_desde, 1, 1, 1, 1)
@@ -347,6 +354,7 @@ class Ui_SANDIASALUD(object):
 
         self.date_cita_hasta = QDateEdit(self.widget_citas)
         self.date_cita_hasta.setObjectName(u"date_cita_hasta")
+        self.date_cita_hasta.setCursor(QCursor(Qt.PointingHandCursor))
         self.date_cita_hasta.setCalendarPopup(True)
 
         self.gridLayout_7.addWidget(self.date_cita_hasta, 3, 1, 1, 1)
@@ -362,6 +370,7 @@ class Ui_SANDIASALUD(object):
 
         self.check_rango_cita = QCheckBox(self.widget_citas)
         self.check_rango_cita.setObjectName(u"check_rango_cita")
+        self.check_rango_cita.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.gridLayout_7.addWidget(self.check_rango_cita, 0, 2, 1, 1)
 
@@ -388,6 +397,7 @@ class Ui_SANDIASALUD(object):
         self.tabla_citas.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.tabla_citas.setObjectName(u"tabla_citas")
         self.tabla_citas.setEnabled(True)
+        self.tabla_citas.viewport().setProperty("cursor", QCursor(Qt.ArrowCursor))
         self.tabla_citas.setStyleSheet(u"")
         self.tabla_citas.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.tabla_citas.setSizeAdjustPolicy(QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
@@ -490,6 +500,107 @@ class Ui_SANDIASALUD(object):
         self.verticalLayout_18.addWidget(self.label_16)
 
         self.stacked_widget.addWidget(self.widget_inicio)
+        self.widget_consultas = QWidget()
+        self.widget_consultas.setObjectName(u"widget_consultas")
+        self.verticalLayout_20 = QVBoxLayout(self.widget_consultas)
+        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
+        self.gridLayout_4 = QGridLayout()
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.text_tratamiento_edit = QTextEdit(self.widget_consultas)
+        self.text_tratamiento_edit.setObjectName(u"text_tratamiento_edit")
+        self.text_tratamiento_edit.setEnabled(False)
+
+        self.gridLayout_4.addWidget(self.text_tratamiento_edit, 4, 0, 1, 3)
+
+        self.combo_nacionalidad_consultas = QComboBox(self.widget_consultas)
+        self.combo_nacionalidad_consultas.addItem("")
+        self.combo_nacionalidad_consultas.addItem("")
+        self.combo_nacionalidad_consultas.setObjectName(u"combo_nacionalidad_consultas")
+        self.combo_nacionalidad_consultas.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.gridLayout_4.addWidget(self.combo_nacionalidad_consultas, 0, 0, 1, 1)
+
+        self.text_diagnostico_edit = QTextEdit(self.widget_consultas)
+        self.text_diagnostico_edit.setObjectName(u"text_diagnostico_edit")
+        self.text_diagnostico_edit.setEnabled(False)
+
+        self.gridLayout_4.addWidget(self.text_diagnostico_edit, 3, 0, 1, 3)
+
+        self.boton_buscar_consultas = QPushButton(self.widget_consultas)
+        self.boton_buscar_consultas.setObjectName(u"boton_buscar_consultas")
+        self.boton_buscar_consultas.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.gridLayout_4.addWidget(self.boton_buscar_consultas, 0, 2, 1, 1)
+
+        self.table_consultas = QTableWidget(self.widget_consultas)
+        if (self.table_consultas.columnCount() < 4):
+            self.table_consultas.setColumnCount(4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.table_consultas.setHorizontalHeaderItem(0, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.table_consultas.setHorizontalHeaderItem(1, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.table_consultas.setHorizontalHeaderItem(2, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.table_consultas.setHorizontalHeaderItem(3, __qtablewidgetitem8)
+        self.table_consultas.setObjectName(u"table_consultas")
+        self.table_consultas.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
+        self.table_consultas.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.table_consultas.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.table_consultas.setAlternatingRowColors(True)
+        self.table_consultas.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.table_consultas.setShowGrid(False)
+        self.table_consultas.setRowCount(0)
+        self.table_consultas.horizontalHeader().setCascadingSectionResizes(False)
+        self.table_consultas.horizontalHeader().setDefaultSectionSize(133)
+        self.table_consultas.horizontalHeader().setHighlightSections(False)
+        self.table_consultas.horizontalHeader().setStretchLastSection(True)
+        self.table_consultas.verticalHeader().setVisible(False)
+        self.table_consultas.verticalHeader().setHighlightSections(False)
+
+        self.gridLayout_4.addWidget(self.table_consultas, 1, 0, 1, 3)
+
+        self.line_cedula_consultas = QLineEdit(self.widget_consultas)
+        self.line_cedula_consultas.setObjectName(u"line_cedula_consultas")
+        self.line_cedula_consultas.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.gridLayout_4.addWidget(self.line_cedula_consultas, 0, 1, 1, 1)
+
+        self.check_editar_consultas = QCheckBox(self.widget_consultas)
+        self.check_editar_consultas.setObjectName(u"check_editar_consultas")
+        self.check_editar_consultas.setEnabled(False)
+        self.check_editar_consultas.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.gridLayout_4.addWidget(self.check_editar_consultas, 2, 0, 1, 3)
+
+        self.gridLayout_4.setRowStretch(0, 1)
+        self.gridLayout_4.setRowStretch(1, 3)
+        self.gridLayout_4.setRowStretch(2, 1)
+        self.gridLayout_4.setRowStretch(3, 1)
+        self.gridLayout_4.setRowStretch(4, 1)
+
+        self.verticalLayout_20.addLayout(self.gridLayout_4)
+
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.boton_actualizar_consultas = QPushButton(self.widget_consultas)
+        self.boton_actualizar_consultas.setObjectName(u"boton_actualizar_consultas")
+        self.boton_actualizar_consultas.setEnabled(False)
+        self.boton_actualizar_consultas.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_5.addWidget(self.boton_actualizar_consultas)
+
+        self.boton_borrar_consultas = QPushButton(self.widget_consultas)
+        self.boton_borrar_consultas.setObjectName(u"boton_borrar_consultas")
+        self.boton_borrar_consultas.setEnabled(False)
+        self.boton_borrar_consultas.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_5.addWidget(self.boton_borrar_consultas)
+
+
+        self.verticalLayout_20.addLayout(self.horizontalLayout_5)
+
+        self.stacked_widget.addWidget(self.widget_consultas)
         self.widget_pacientes = QWidget()
         self.widget_pacientes.setObjectName(u"widget_pacientes")
         self.verticalLayout_11 = QVBoxLayout(self.widget_pacientes)
@@ -499,7 +610,7 @@ class Ui_SANDIASALUD(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, -993, 592, 1407))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 588, 1407))
         self.verticalLayout_6 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.contenedor_buscador = QWidget(self.scrollAreaWidgetContents)
@@ -791,6 +902,7 @@ class Ui_SANDIASALUD(object):
 
         self.boton_borrar_paciente = QPushButton(self.scrollAreaWidgetContents)
         self.boton_borrar_paciente.setObjectName(u"boton_borrar_paciente")
+        self.boton_borrar_paciente.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.verticalLayout_6.addWidget(self.boton_borrar_paciente, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -836,6 +948,7 @@ class Ui_SANDIASALUD(object):
 
         self.date_primera_relacion = QDateEdit(self.widget_registrar_antecedente)
         self.date_primera_relacion.setObjectName(u"date_primera_relacion")
+        self.date_primera_relacion.setCursor(QCursor(Qt.PointingHandCursor))
         self.date_primera_relacion.setCalendarPopup(True)
 
         self.verticalLayout_15.addWidget(self.date_primera_relacion, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignVCenter)
@@ -949,7 +1062,7 @@ class Ui_SANDIASALUD(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, -171, 592, 587))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, -171, 588, 587))
         self.verticalLayout_13 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.gridLayout_5 = QGridLayout()
@@ -1197,6 +1310,8 @@ class Ui_SANDIASALUD(object):
         self.boton_v_pacientes.setText(QCoreApplication.translate("SANDIASALUD", u"PACIENTES", None))
         self.boton_v_registrar_pacientes.setText(QCoreApplication.translate("SANDIASALUD", u"REGISTRAR\n"
 "PACIENTES", None))
+        self.boton_v_consultas.setText(QCoreApplication.translate("SANDIASALUD", u"VER\n"
+"CONSULTAS", None))
         self.boton_inicio.setText("")
         self.boton_v_configuracion.setText(QCoreApplication.translate("SANDIASALUD", u"CONFIGURACI\u00d3N", None))
         self.boton_v_cerrar_sesion.setText(QCoreApplication.translate("SANDIASALUD", u"CERRAR SESI\u00d3N", None))
@@ -1225,6 +1340,24 @@ class Ui_SANDIASALUD(object):
         self.line_telefono.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"TELEFONO", None))
         self.label_20.setText(QCoreApplication.translate("SANDIASALUD", u"FECHA DE NACIMIENTO:", None))
         self.label_16.setText("")
+        self.text_tratamiento_edit.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"TRATAMIENTO", None))
+        self.combo_nacionalidad_consultas.setItemText(0, QCoreApplication.translate("SANDIASALUD", u"V", None))
+        self.combo_nacionalidad_consultas.setItemText(1, QCoreApplication.translate("SANDIASALUD", u"E", None))
+
+        self.text_diagnostico_edit.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"DIAGNOSTICO", None))
+        self.boton_buscar_consultas.setText(QCoreApplication.translate("SANDIASALUD", u"BUSCAR", None))
+        ___qtablewidgetitem5 = self.table_consultas.horizontalHeaderItem(0)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("SANDIASALUD", u"ID", None));
+        ___qtablewidgetitem6 = self.table_consultas.horizontalHeaderItem(1)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("SANDIASALUD", u"NOMBRE", None));
+        ___qtablewidgetitem7 = self.table_consultas.horizontalHeaderItem(2)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("SANDIASALUD", u"APELLIDO", None));
+        ___qtablewidgetitem8 = self.table_consultas.horizontalHeaderItem(3)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("SANDIASALUD", u"FECHA", None));
+        self.line_cedula_consultas.setPlaceholderText(QCoreApplication.translate("SANDIASALUD", u"CEDULA", None))
+        self.check_editar_consultas.setText(QCoreApplication.translate("SANDIASALUD", u"ACTUALIZAR", None))
+        self.boton_actualizar_consultas.setText(QCoreApplication.translate("SANDIASALUD", u"ACTUALIZAR", None))
+        self.boton_borrar_consultas.setText(QCoreApplication.translate("SANDIASALUD", u"BORRAR", None))
         self.combo_nacionalidad.setItemText(0, QCoreApplication.translate("SANDIASALUD", u"V", None))
         self.combo_nacionalidad.setItemText(1, QCoreApplication.translate("SANDIASALUD", u"E", None))
 

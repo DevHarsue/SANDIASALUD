@@ -2,6 +2,8 @@ from bd.tablas import TablaPacientes,TablaAntecedentes,TablaEmbarazos,TablaCitas
 from PySide6.QtWidgets import QMessageBox
 from PySide6.QtCore import QPropertyAnimation,QEasingCurve,QDate
 from validaciones.validaciones_textos import Validador
+from obtener_fecha import obtener_fecha
+
 
 class VistaConsulta:
     def __init__(self,ventana):
@@ -42,26 +44,38 @@ class VistaConsulta:
                 self.ventana.vista_registrar_pacientes.index=self.ui.stacked_widget.currentIndex()
                 self.ui.stacked_widget.setCurrentWidget(self.ui.widget_registrar_pacientes)
                 self.ui.line_cedula.setText(cedula)
-                self.ui.nacionalidad.setCurrentIndex(self.ui.combo_nacionalidad_agenda.currentIndex())
+                self.ui.nacionalidad.setCurrentIndex(self.ui.combo_consulta_antecedentes.currentIndex())
+            return 0
+        
+        self.paciente = self.paciente[0]
+        tabla_citas = TablaCitas()
+        cita = tabla_citas.select_citas_paciente(self.paciente[0])
+        if not bool(cita):
+            respuesta = self.ventana.preguntar("El cliente no tiene cita previa","¿Desea realizar consulta sin cita previa?")
+            if respuesta == QMessageBox.StandardButton.No:
                 return 0
+            self.fecha = obtener_fecha()
         else:
-            self.paciente = self.paciente[0]
-            self.ui.line_consulta_nombre.setText(self.paciente[3])
-            self.ui.line_consulta_apellido.setText(self.paciente[4])
-            embarazo = TablaEmbarazos().select_citas_paciente(str(self.paciente[0]))
-            if bool(embarazo):
-                embarazo = embarazo[0]
-                regla = embarazo[1]
-                año = int(regla.strftime("%Y"))
-                mes = int(regla.strftime("%m"))
-                dia = int(regla.strftime("%d"))
-                self.ui.date_consulta_ultima_regla.setDate(QDate(año,mes,dia))
-                parto = embarazo[2]
-                año = int(parto.strftime("%Y"))
-                mes = int(parto.strftime("%m"))
-                dia = int(parto.strftime("%d"))
-                self.ui.date_consulta_parto.setDate(QDate(año,mes,dia))
-    
+            self.fecha = cita[0][1].strftime('%Y-%m-%d %H:%M:%S')
+            self.cita_id = cita[0][0]
+        
+        self.ui.line_consulta_nombre.setText(self.paciente[3])
+        self.ui.line_consulta_apellido.setText(self.paciente[4])
+        embarazo = TablaEmbarazos().select_citas_paciente(str(self.paciente[0]))
+        if bool(embarazo):
+            embarazo = embarazo[0]
+            regla = embarazo[1]
+            año = int(regla.strftime("%Y"))
+            mes = int(regla.strftime("%m"))
+            dia = int(regla.strftime("%d"))
+            self.ui.date_consulta_ultima_regla.setDate(QDate(año,mes,dia))
+            parto = embarazo[2]
+            año = int(parto.strftime("%Y"))
+            mes = int(parto.strftime("%m"))
+            dia = int(parto.strftime("%d"))
+            self.ui.date_consulta_parto.setDate(QDate(año,mes,dia))
+
+
     def reiniciar_paciente(self):
         self.ui.line_consulta_nombre.setText("")
         self.ui.line_consulta_apellido.setText("")
@@ -145,7 +159,7 @@ class VistaConsulta:
                 
         if self.ui.check_proxima_cita_consulta.isChecked():
             tabla = TablaCitas()
-            fecha = self.ui.date_proxima_cita_consulta.dateTime().toString("yyyy-MM-dd hh-mm")
+            fecha = self.ui.date_proxima_cita_consulta.dateTime().toString("yyyy-MM-dd hh:mm")
             cita = tabla.select_citas_paciente(self.paciente[0])
             if not bool(cita):
                 tabla.insert(fecha,str(self.paciente[0]))
@@ -176,7 +190,10 @@ class VistaConsulta:
                 return 0
         
         tabla = TablaConsultas()
-        tabla.insert(str(self.paciente[0]),diagnostico,tratamiento)
+        tabla.insert(str(self.paciente[0]),diagnostico,tratamiento,self.fecha)
+        
+        if not self.ui.check_proxima_cita_consulta.isChecked():
+            TablaCitas().delete(str(self.cita_id))
         self.ventana.mostrar_mensajes("Consulta finalizada","Consulta realizada existosamente")
         self.reiniciar_paciente()
         self.reiniciar()

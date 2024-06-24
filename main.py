@@ -6,9 +6,9 @@ from funciones_stacked_widget.citas import VistaCitas
 from funciones_stacked_widget.consulta import VistaConsulta
 from funciones_stacked_widget.antecedentes import VistaAntecedentes
 from funciones_stacked_widget.pacientes import VistaPacientes
+from funciones_stacked_widget.consultas import VistaConsultas
 from validaciones.hash import convertir_texto_hash
 from bd.tablas import TablaUsuarios
-
 from PySide6.QtWidgets import QMainWindow, QApplication,QMessageBox,QLineEdit
 import sys
 
@@ -26,7 +26,7 @@ class VentanaPrincipal(QMainWindow):
         self.vista_consulta = VistaConsulta(self)
         self.vista_antecedentes = VistaAntecedentes(self)
         self.vista_pacientes = VistaPacientes(self)
-        
+        self.vista_consultas = VistaConsultas(self)
     
     def asignar_slots_vistas(self):
         self.ui.stacked_widget.setCurrentWidget(self.ui.widget_inicio)
@@ -36,6 +36,7 @@ class VentanaPrincipal(QMainWindow):
         self.ui.boton_v_consulta.pressed.connect(lambda:self.ui.stacked_widget.setCurrentWidget(self.ui.widget_consulta))
         self.ui.boton_v_pacientes.pressed.connect(lambda:self.ui.stacked_widget.setCurrentWidget(self.ui.widget_pacientes))
         self.ui.boton_v_registrar_pacientes.pressed.connect(lambda:self.ui.stacked_widget.setCurrentWidget(self.ui.widget_registrar_pacientes))
+        self.ui.boton_v_consultas.pressed.connect(lambda:self.ui.stacked_widget.setCurrentWidget(self.ui.widget_consultas))
     def ajustar_ventana(self):
         if not self.permisos[0]:
             self.ui.boton_v_consulta.hide()

@@ -37,6 +37,10 @@ class TablaConsultas(Tabla):
     
     def select_consultas_paciente(self,id_paciente):
         return self.bd.consultar(f"SELECT * FROM consultas WHERE id_paciente={id_paciente} ORDER BY id_consulta DESC LIMIT 1;")
+    
+    def select_todas_consultas_paciente(self,id_paciente):
+        return self.bd.consultar(f"SELECT * FROM consultas WHERE id_paciente={id_paciente} ORDER BY fecha DESC;")
+
 
 class TablaUsuarios(Tabla):
     def __init__(self):

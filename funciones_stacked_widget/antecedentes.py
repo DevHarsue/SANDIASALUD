@@ -2,6 +2,7 @@ from bd.tablas import TablaAntecedentes
 from PySide6.QtCore import QDate
 from PySide6.QtWidgets import QMessageBox
 
+
 class VistaAntecedentes:
     def __init__(self,ventana) -> None:
         self.ventana = ventana

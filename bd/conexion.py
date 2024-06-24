@@ -58,8 +58,7 @@ class Tabla:
     def insert(self,*datos):
         self.columnas.pop(0)
         if len(datos)!=len(self.columnas):
-            print(len(datos))
-            print(len(self.columnas))
+            print("Faltan datos")
             return False
         sql = f"INSERT INTO {self.nombre_tabla} ({','.join(self.columnas)}) VALUES('{"','".join(datos)}')"
         self.columnas.insert(0,self.columna_id)

@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QTableWidget,QTableWidgetItem
 from datetime import datetime,time
 from bd.tablas import TablaCitas
 
+
 class VistaCitas:
     def __init__(self,ventana):
         self.ventana = ventana
