@@ -5,7 +5,7 @@ import re
 
 class Validador:
     def __init__(self):
-        self.regex_solo_texto = QRegularExpression(r"^[A-Za-z]+$")
+        self.regex_solo_texto = QRegularExpression(r"^[A-Za-záéíóúÁÉÍÓÚñÑ]+(?: [A-Za-záéíóúÁÉÍÓÚñÑ]+)*$")
         self.regex_numero_telefono = QRegularExpression(r"^[0-9\-\+]{20}$")
         self.regex_cedula = QRegularExpression(r"^[0-9]{9}$")
         self.regex_contraseñas = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-+_!@#$%/<>·3()=?¿^&*.,¡`*¨´,_º'^:;ª|~€¬]).{8,}$"

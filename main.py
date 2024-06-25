@@ -58,6 +58,7 @@ class VentanaPrincipal(QMainWindow):
             self.ui.boton_v_configuracion.hide()
             self.ui.boton_v_consultas.hide()
             self.ui.boton_borrar_paciente.hide()
+            self.ui.boton_imprimir.hide()
         elif self.rol == "ADMIN":
             self.ui.boton_configurar_bd.hide()
     
@@ -106,9 +107,9 @@ class VentanaIniciarSesion(QMainWindow):
         contraseña_introducida = convertir_texto_hash(self.ui.line_contrasena.text())
         
         #Borrar esto
-        if contraseña_introducida==convertir_texto_hash(""):
-            self.cambiar_ventana("SUPER-ADMIN",usuario[0][0])
-            return 0
+        # if contraseña_introducida==convertir_texto_hash(""):
+        #     self.cambiar_ventana("SUPER-ADMIN",usuario[0][0])
+        #     return 0
         
         if contraseña!=contraseña_introducida:
             QMessageBox.information(self,"Contraseña Incorrecta","La contraseña no coincide",QMessageBox.StandardButton.Ok,QMessageBox.StandardButton.Ok)

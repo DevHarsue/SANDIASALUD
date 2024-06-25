@@ -2,7 +2,9 @@ from PySide6.QtCore import QDate,QDateTime
 from PySide6.QtWidgets import QMessageBox
 from bd.tablas import TablaCitas,TablaPacientes,TablaConsultas,TablaEmbarazos,TablaAntecedentes
 from validaciones.validaciones_textos import Validador
-
+from pdf.paciente import Paciente
+import os
+import webbrowser
 
 class VistaPacientes:
     def __init__(self,ventana):
@@ -39,6 +41,7 @@ class VistaPacientes:
         validador.solo_texto(self.ui.line_apellido_editar)
         validador.numero_telefono(self.ui.line_telefono_editar)
         
+        self.ui.boton_imprimir.pressed.connect(self.imprimir)
         self.ui.boton_borrar_paciente.pressed.connect(self.borrar_paciente)
     
     
@@ -129,6 +132,9 @@ class VistaPacientes:
             self.ui.check_embarazo.setDisabled(False)
         else:
             self.ui.check_embarazo.setDisabled(True)
+            
+        self.ui.boton_imprimir.setDisabled(False)
+        
     
     def cambiar_datos_personales(self):
         estado =not bool(self.ui.check_datos_personales.isChecked())
@@ -163,7 +169,9 @@ class VistaPacientes:
     def comprobar_boton_actualizar(self):
         if self.ui.check_embarazo.isChecked() or self.ui.check_antecedentes.isChecked() or self.ui.check_consulta.isChecked() or self.ui.check_proxima_cita.isChecked() or self.ui.check_datos_personales.isChecked():
             self.ui.boton_actualizar_datos.setEnabled(True)
+            self.ui.boton_imprimir.setEnabled(False)
         else:
+            self.ui.boton_imprimir.setEnabled(True)
             self.ui.boton_actualizar_datos.setEnabled(False)
     
     def actualizar(self):
@@ -231,6 +239,10 @@ class VistaPacientes:
             tabla.update(str(embarazo_id),{"fecha_ultima_regla":regla,"fecha_probable_parto":parto})
         
         self.ventana.mostrar_mensajes("Actualizacion Completada","Actualizacion Completada Exitosamente")
+        if self.ventana.rol!="USUARIO":
+            respuesta = self.ventana.preguntar("Imprimir","¿Imprimir Paciente?")
+            if respuesta == QMessageBox.StandardButton.Yes:
+                self.imprimir()
         self.reiniciar()
         
     
@@ -260,6 +272,7 @@ class VistaPacientes:
         self.ui.check_antecedentes.setDisabled(True)
         self.ui.check_embarazo.setDisabled(True)
         self.ui.check_datos_personales.setDisabled(True)
+        self.ui.boton_imprimir.setDisabled(True)
         
         
         self.ui.check_proxima_cita.setChecked(False)
@@ -307,4 +320,58 @@ class VistaPacientes:
         tabla.delete(str(self.paciente[0]))
         self.ventana.mostrar_mensajes("Paciente Eliminado","Paciente Eliminado Correctamente")
         
+        self.reiniciar()
+    
+    def imprimir(self):
+        nacionalidad = self.ui.combo_nacionalidad.currentText()
+        cedula = self.ui.line_cedula_buscar.text()
+        nombre = self.ui.line_nombre_editar.text()
+        apellido = self.ui.line_apellido_editar.text()
+        nacimiento = self.ui.date_fecha_nacimiento.date().toString("yy-MM-dd")
+        telefono = self.ui.line_telefono_editar.text()
+        direccion = self.ui.text_direccion_editar.toPlainText()
+        
+        if self.ui.check_proxima_cita.isEnabled():
+            proxima_cita = self.ui.date_proxima_cita.dateTime().toString("yy-MM-dd hh-mm")
+        else:
+            proxima_cita = False
+        
+        if self.ui.check_consulta.isEnabled():
+            diagnostico = self.ui.text_diagnostico.toPlainText()
+            tratamiento = self.ui.text_diagnostico.toPlainText()
+        else:
+            diagnostico = False
+            tratamiento = False
+        
+        if self.ui.check_antecedentes.isEnabled():
+            patologicos = self.ui.text_patologicos.toPlainText()
+            quirurjicos = self.ui.text_quirurjicos.toPlainText()
+            tratamiento_actual = self.ui.text_tratamiento.toPlainText()
+            relacion = self.ui.date_proxima_cita.date().toString("yy-MM-dd")
+
+        else:
+            patologicos = False
+            quirurjicos = False
+            tratamiento_actual = False
+            relacion = False
+        
+        if self.ui.check_embarazo.isEnabled():
+            regla = self.ui.date_ultima_regla.date().toString("yy-MM-dd")
+            embarazo = self.ui.date_parto.date().toString("yy-MM-dd")
+        else:
+            regla = False
+            embarazo = False
+        
+        pdf = Paciente(nacionalidad,cedula,nombre,apellido,nacimiento,telefono,direccion,proxima_cita,diagnostico,tratamiento,patologicos,quirurjicos,tratamiento_actual,relacion,regla,embarazo)
+        
+        documentos_path = str(os.path.expanduser("~\\Documents"))
+        try:
+            os.makedirs(documentos_path+"\\SANDIASALUD")
+        except FileExistsError:
+            pass
+        
+        path = documentos_path+f"\\SANDIASALUD\\paciente_{nacionalidad}-{cedula}.pdf"
+        pdf.output(path)
+        webbrowser.open_new(path)
+
         self.reiniciar()

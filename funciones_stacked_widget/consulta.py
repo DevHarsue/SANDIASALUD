@@ -3,6 +3,9 @@ from PySide6.QtWidgets import QMessageBox
 from PySide6.QtCore import QPropertyAnimation,QEasingCurve,QDate
 from validaciones.validaciones_textos import Validador
 from obtener_fecha import obtener_fecha
+from pdf.consulta import Consulta
+import os
+import webbrowser
 
 
 class VistaConsulta:
@@ -25,6 +28,7 @@ class VistaConsulta:
         self.ui.check_embarazo_consulta.stateChanged.connect(self.embarazo)
         
         self.ui.boton_fin_consulta.pressed.connect(self.fin_consulta)
+        self.cita_id = False
         self.reiniciar_paciente()
     
     def buscar_paciente(self):
@@ -55,6 +59,7 @@ class VistaConsulta:
             if respuesta == QMessageBox.StandardButton.No:
                 return 0
             self.fecha = obtener_fecha()
+            self.cita_id = False
         else:
             self.fecha = cita[0][1].strftime('%Y-%m-%d %H:%M:%S')
             self.cita_id = cita[0][0]
@@ -147,35 +152,6 @@ class VistaConsulta:
         if self.ui.line_consulta_nombre.text()=="":
             self.ventana.mostrar_mensajes("Sin Paciente","Seleccione un Paciente.")
             return 0
-        if bool(self.antecedente):
-            respuesta = self.ventana.preguntar("Actualizacion de Antecedentes","Se van a actualizar los antecedentes, ¿Estas de acuerdo?") 
-            if respuesta == QMessageBox.StandardButton.Yes:
-                patologico = self.ui.text_antecedente_patologico.toPlainText()
-                quirurjico = self.ui.text_antecedentes_quirurjicos.toPlainText()
-                tratamiento = self.ui.text_tratamiento_actual.toPlainText()
-                relacion = self.ui.date_primera_relacion_consulta.date().toString("yyyy-MM-dd")
-                tabla = TablaAntecedentes()
-                tabla.update(self.antecedente[0],{"antecedentes_patologicos":patologico,"antecedentes_quirurjicos":quirurjico,"tratamiento_actual":tratamiento,"fecha_primera_relacion_sexual":relacion})
-                
-        if self.ui.check_proxima_cita_consulta.isChecked():
-            tabla = TablaCitas()
-            fecha = self.ui.date_proxima_cita_consulta.dateTime().toString("yyyy-MM-dd hh:mm")
-            cita = tabla.select_citas_paciente(self.paciente[0])
-            if not bool(cita):
-                tabla.insert(fecha,str(self.paciente[0]))
-                cita = tabla.select_citas_paciente(self.paciente[0])
-            else:
-                tabla.update(cita[0][0],{"fecha_proxima_cita":fecha})
-                
-        if self.ui.check_embarazo_consulta.isChecked():
-            tabla = TablaEmbarazos()
-            regla = self.ui.date_consulta_ultima_regla.date().toString("yyyy-MM-dd")
-            parto = self.ui.date_consulta_parto.date().toString("yyyy-MM-dd")
-            embarazo = tabla.select_citas_paciente(self.paciente[0])
-            if not bool(embarazo):
-                tabla.insert(regla,parto,str(self.paciente[0]))
-            else:
-                tabla.update(embarazo[0][0],{"fecha_ultima_regla":regla,"fecha_probable_parto":parto})
         
         diagnostico = self.ui.text_consulta_diagnostico.toPlainText()
         tratamiento = self.ui.text_consulta_tratamiento.toPlainText()
@@ -188,16 +164,64 @@ class VistaConsulta:
             respuesta = self.ventana.preguntar("No hay tratamiento","No hay tratamiento, ¿Registrar de todos modos?")
             if respuesta == QMessageBox.StandardButton.No:
                 return 0
+            
+        if bool(self.antecedente):
+            respuesta = self.ventana.preguntar("Actualizacion de Antecedentes","Se van a actualizar los antecedentes, ¿Estas de acuerdo?") 
+            if respuesta == QMessageBox.StandardButton.Yes:
+                patologico = self.ui.text_antecedente_patologico.toPlainText()
+                quirurjico = self.ui.text_antecedentes_quirurjicos.toPlainText()
+                tratamiento = self.ui.text_tratamiento_actual.toPlainText()
+                relacion = self.ui.date_primera_relacion_consulta.date().toString("yyyy-MM-dd")
+                tabla = TablaAntecedentes()
+                tabla.update(self.antecedente[0],{"antecedentes_patologicos":patologico,"antecedentes_quirurjicos":quirurjico,"tratamiento_actual":tratamiento,"fecha_primera_relacion_sexual":relacion})
+                
+        if self.ui.check_proxima_cita_consulta.isChecked():
+            tabla = TablaCitas()
+            self.fecha_proxima = self.ui.date_proxima_cita_consulta.dateTime().toString("yyyy-MM-dd hh:mm")
+            cita = tabla.select_citas_paciente(self.paciente[0])
+            if not bool(cita):
+                tabla.insert(self.fecha_proxima,str(self.paciente[0]))
+            else:
+                tabla.update(cita[0][0],{"fecha_proxima_cita":self.fecha_proxima})
+        else:
+            self.fecha_proxima = False
+                
+        if self.ui.check_embarazo_consulta.isChecked():
+            tabla = TablaEmbarazos()
+            self.regla = self.ui.date_consulta_ultima_regla.date().toString("yyyy-MM-dd")
+            self.parto = self.ui.date_consulta_parto.date().toString("yyyy-MM-dd")
+            embarazo = tabla.select_citas_paciente(self.paciente[0])
+            if not bool(embarazo):
+                tabla.insert(self.regla,self.parto,str(self.paciente[0]))
+            else:
+                tabla.update(embarazo[0][0],{"fecha_ultima_regla":self.regla,"fecha_probable_parto":self.parto})
+        else:
+            self.regla = False
+            self.parto = False
         
         tabla = TablaConsultas()
         tabla.insert(str(self.paciente[0]),diagnostico,tratamiento,self.fecha)
         
-        if not self.ui.check_proxima_cita_consulta.isChecked():
+        if not self.ui.check_proxima_cita_consulta.isChecked() and self.cita_id:
             TablaCitas().delete(str(self.cita_id))
+            
         self.ventana.mostrar_mensajes("Consulta finalizada","Consulta realizada existosamente")
+        
+        id = tabla.select_consultas_paciente(str(self.paciente[0]))[0][0]
+        pdf = Consulta(id,self.paciente[1],self.paciente[2],self.paciente[3],self.paciente[4],diagnostico,tratamiento,self.fecha,self.fecha_proxima,self.regla,self.parto)
+        documentos_path = str(os.path.expanduser("~\\Documents"))
+        try:
+            os.makedirs(documentos_path+"\\SANDIASALUD")
+        except FileExistsError:
+            pass
+        path = f"{documentos_path}\\SANDIASALUD\\Consulta_{self.paciente[3]}_{self.paciente[4]}_{id}.pdf"
+        pdf.output(path)
+        webbrowser.open_new(path)
+        
         self.reiniciar_paciente()
         self.reiniciar()
         self.ui.stacked_widget.setCurrentWidget(self.ui.widget_inicio)
+        
     
     def reiniciar(self):
         self.ui.line_consulta_cedula.setText("")
