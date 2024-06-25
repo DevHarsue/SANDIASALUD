@@ -66,15 +66,11 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_usuario` varchar(20) NOT NULL,
+  `nombre_usuario` varchar(64) NOT NULL,
   `contraseña_usuario` varchar(64) NOT NULL,
-  `permiso_consultas` tinyint(1) DEFAULT NULL,
-  `permiso_pacientes_editar_consulta` tinyint(1) DEFAULT NULL,
-  `permiso_pacientes_editar_antecedentes` tinyint(1) DEFAULT NULL,
-  `permiso_pacientes_editar_embarazo` tinyint(1) DEFAULT NULL,
-  `permiso_configuraciones` tinyint(1) DEFAULT NULL,
-  `permiso_agregar_usuarios` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id_usuario`)
+  `rol` varchar(64) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `nombre_usuario` (`nombre_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 DELIMITER //
