@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'interfaz_inicio.ui'
+## Form generated from reading UI file 'interfaz_configuracion.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.1
 ##
@@ -19,16 +19,16 @@ from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
     QStatusBar, QVBoxLayout, QWidget)
 
-class Ui_Login(object):
-    def setupUi(self, Login):
-        if not Login.objectName():
-            Login.setObjectName(u"Login")
-        Login.resize(800, 600)
-        Login.setMinimumSize(QSize(800, 600))
+class Ui_Configuracion(object):
+    def setupUi(self, Configuracion):
+        if not Configuracion.objectName():
+            Configuracion.setObjectName(u"Configuracion")
+        Configuracion.resize(800, 600)
+        Configuracion.setMinimumSize(QSize(800, 600))
         icon = QIcon()
         icon.addFile(u"images/logo.jpeg", QSize(), QIcon.Normal, QIcon.Off)
-        Login.setWindowIcon(icon)
-        Login.setStyleSheet(u"*{\n"
+        Configuracion.setWindowIcon(icon)
+        Configuracion.setStyleSheet(u"*{\n"
 "	font-family: Agency FB;\n"
 "	font-weight: bold;\n"
 "	font-size: 16pt;\n"
@@ -86,7 +86,7 @@ class Ui_Login(object):
                         "x QLabel{\n"
 "	color:#2C0146;\n"
 "}")
-        self.centralwidget = QWidget(Login)
+        self.centralwidget = QWidget(Configuracion)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -240,11 +240,17 @@ class Ui_Login(object):
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
+        self.line_host = QLineEdit(self.contenedor_principal)
+        self.line_host.setObjectName(u"line_host")
+        self.line_host.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.gridLayout.addWidget(self.line_host, 5, 0, 1, 1)
+
         self.boton_iniciar = QPushButton(self.contenedor_principal)
         self.boton_iniciar.setObjectName(u"boton_iniciar")
         self.boton_iniciar.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.gridLayout.addWidget(self.boton_iniciar, 5, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout.addWidget(self.boton_iniciar, 7, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
         self.line_usuario = QLineEdit(self.contenedor_principal)
         self.line_usuario.setObjectName(u"line_usuario")
@@ -275,6 +281,12 @@ class Ui_Login(object):
 
         self.gridLayout.addWidget(self.label_2, 2, 0, 1, 1)
 
+        self.line_puerto = QLineEdit(self.contenedor_principal)
+        self.line_puerto.setObjectName(u"line_puerto")
+        self.line_puerto.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.gridLayout.addWidget(self.line_puerto, 6, 0, 1, 1)
+
 
         self.gridLayout_2.addLayout(self.gridLayout, 1, 1, 1, 1)
 
@@ -282,27 +294,39 @@ class Ui_Login(object):
 
         self.gridLayout_2.addItem(self.horizontalSpacer_2, 1, 2, 1, 1)
 
+        self.boton_volver = QPushButton(self.contenedor_principal)
+        self.boton_volver.setObjectName(u"boton_volver")
+        self.boton_volver.setEnabled(False)
+        self.boton_volver.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.gridLayout_2.addWidget(self.boton_volver, 0, 0, 1, 1)
+
 
         self.verticalLayout_3.addWidget(self.contenedor_principal)
 
-        Login.setCentralWidget(self.centralwidget)
-        self.statusbar = QStatusBar(Login)
+        Configuracion.setCentralWidget(self.centralwidget)
+        self.statusbar = QStatusBar(Configuracion)
         self.statusbar.setObjectName(u"statusbar")
-        Login.setStatusBar(self.statusbar)
+        Configuracion.setStatusBar(self.statusbar)
         QWidget.setTabOrder(self.line_usuario, self.line_contrasena)
-        QWidget.setTabOrder(self.line_contrasena, self.boton_iniciar)
+        QWidget.setTabOrder(self.line_contrasena, self.line_host)
+        QWidget.setTabOrder(self.line_host, self.line_puerto)
+        QWidget.setTabOrder(self.line_puerto, self.boton_iniciar)
 
-        self.retranslateUi(Login)
+        self.retranslateUi(Configuracion)
 
-        QMetaObject.connectSlotsByName(Login)
+        QMetaObject.connectSlotsByName(Configuracion)
     # setupUi
 
-    def retranslateUi(self, Login):
-        Login.setWindowTitle(QCoreApplication.translate("Login", u"SANDIA SALUD", None))
-        self.boton_iniciar.setText(QCoreApplication.translate("Login", u"INICIAR SESI\u00d3N", None))
-        self.line_usuario.setPlaceholderText(QCoreApplication.translate("Login", u"USUARIO", None))
+    def retranslateUi(self, Configuracion):
+        Configuracion.setWindowTitle(QCoreApplication.translate("Configuracion", u"SANDIA SALUD", None))
+        self.line_host.setPlaceholderText(QCoreApplication.translate("Configuracion", u"HOST", None))
+        self.boton_iniciar.setText(QCoreApplication.translate("Configuracion", u"ACEPTAR", None))
+        self.line_usuario.setPlaceholderText(QCoreApplication.translate("Configuracion", u"USUARIO", None))
         self.label.setText("")
-        self.line_contrasena.setPlaceholderText(QCoreApplication.translate("Login", u"CONTRASE\u00d1A", None))
-        self.label_2.setText(QCoreApplication.translate("Login", u"INICIAR SESI\u00d3N", None))
+        self.line_contrasena.setPlaceholderText(QCoreApplication.translate("Configuracion", u"CONTRASE\u00d1A", None))
+        self.label_2.setText(QCoreApplication.translate("Configuracion", u"CONFIGURAR CONEXION CON LA BASE DE DATOS", None))
+        self.line_puerto.setPlaceholderText(QCoreApplication.translate("Configuracion", u"PUERTO", None))
+        self.boton_volver.setText(QCoreApplication.translate("Configuracion", u"VOLVER", None))
     # retranslateUi
 

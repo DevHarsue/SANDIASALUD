@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'interfaz_inicio.ui'
+## Form generated from reading UI file 'interfaz_usuarios.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.1
 ##
@@ -15,20 +15,20 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QStatusBar, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QGridLayout, QLabel,
+    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
+    QSpacerItem, QStatusBar, QVBoxLayout, QWidget)
 
-class Ui_Login(object):
-    def setupUi(self, Login):
-        if not Login.objectName():
-            Login.setObjectName(u"Login")
-        Login.resize(800, 600)
-        Login.setMinimumSize(QSize(800, 600))
+class Ui_Usuarios(object):
+    def setupUi(self, Usuarios):
+        if not Usuarios.objectName():
+            Usuarios.setObjectName(u"Usuarios")
+        Usuarios.resize(800, 600)
+        Usuarios.setMinimumSize(QSize(800, 600))
         icon = QIcon()
         icon.addFile(u"images/logo.jpeg", QSize(), QIcon.Normal, QIcon.Off)
-        Login.setWindowIcon(icon)
-        Login.setStyleSheet(u"*{\n"
+        Usuarios.setWindowIcon(icon)
+        Usuarios.setStyleSheet(u"*{\n"
 "	font-family: Agency FB;\n"
 "	font-weight: bold;\n"
 "	font-size: 16pt;\n"
@@ -86,7 +86,7 @@ class Ui_Login(object):
                         "x QLabel{\n"
 "	color:#2C0146;\n"
 "}")
-        self.centralwidget = QWidget(Login)
+        self.centralwidget = QWidget(Usuarios)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -240,17 +240,24 @@ class Ui_Login(object):
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
-        self.boton_iniciar = QPushButton(self.contenedor_principal)
-        self.boton_iniciar.setObjectName(u"boton_iniciar")
-        self.boton_iniciar.setCursor(QCursor(Qt.PointingHandCursor))
+        self.boton_registrar = QPushButton(self.contenedor_principal)
+        self.boton_registrar.setObjectName(u"boton_registrar")
+        self.boton_registrar.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.gridLayout.addWidget(self.boton_iniciar, 5, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout.addWidget(self.boton_registrar, 7, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
 
         self.line_usuario = QLineEdit(self.contenedor_principal)
         self.line_usuario.setObjectName(u"line_usuario")
         self.line_usuario.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.gridLayout.addWidget(self.line_usuario, 3, 0, 1, 1)
+        self.gridLayout.addWidget(self.line_usuario, 4, 0, 1, 1)
+
+        self.label_2 = QLabel(self.contenedor_principal)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setStyleSheet(u"font-size: 24px;")
+        self.label_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.gridLayout.addWidget(self.label_2, 2, 0, 1, 1)
 
         self.label = QLabel(self.contenedor_principal)
         self.label.setObjectName(u"label")
@@ -260,20 +267,30 @@ class Ui_Login(object):
 
         self.gridLayout.addWidget(self.label, 1, 0, 1, 1)
 
+        self.combo_tipo = QComboBox(self.contenedor_principal)
+        self.combo_tipo.addItem("")
+        self.combo_tipo.addItem("")
+        self.combo_tipo.addItem("")
+        self.combo_tipo.setObjectName(u"combo_tipo")
+        self.combo_tipo.setCursor(QCursor(Qt.PointingHandCursor))
+        self.combo_tipo.setStyleSheet(u"min-width:8em;")
+
+        self.gridLayout.addWidget(self.combo_tipo, 3, 0, 1, 1, Qt.AlignmentFlag.AlignHCenter)
+
+        self.line_confirmacion = QLineEdit(self.contenedor_principal)
+        self.line_confirmacion.setObjectName(u"line_confirmacion")
+        self.line_confirmacion.setEchoMode(QLineEdit.EchoMode.Password)
+        self.line_confirmacion.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.gridLayout.addWidget(self.line_confirmacion, 6, 0, 1, 1)
+
         self.line_contrasena = QLineEdit(self.contenedor_principal)
         self.line_contrasena.setObjectName(u"line_contrasena")
         self.line_contrasena.setStyleSheet(u"")
         self.line_contrasena.setEchoMode(QLineEdit.EchoMode.Password)
         self.line_contrasena.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.gridLayout.addWidget(self.line_contrasena, 4, 0, 1, 1)
-
-        self.label_2 = QLabel(self.contenedor_principal)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setStyleSheet(u"font-size: 24px;")
-        self.label_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.gridLayout.addWidget(self.label_2, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.line_contrasena, 5, 0, 1, 1)
 
 
         self.gridLayout_2.addLayout(self.gridLayout, 1, 1, 1, 1)
@@ -282,27 +299,42 @@ class Ui_Login(object):
 
         self.gridLayout_2.addItem(self.horizontalSpacer_2, 1, 2, 1, 1)
 
+        self.boton_volver = QPushButton(self.contenedor_principal)
+        self.boton_volver.setObjectName(u"boton_volver")
+        self.boton_volver.setEnabled(False)
+        self.boton_volver.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.gridLayout_2.addWidget(self.boton_volver, 0, 0, 1, 1)
+
 
         self.verticalLayout_3.addWidget(self.contenedor_principal)
 
-        Login.setCentralWidget(self.centralwidget)
-        self.statusbar = QStatusBar(Login)
+        Usuarios.setCentralWidget(self.centralwidget)
+        self.statusbar = QStatusBar(Usuarios)
         self.statusbar.setObjectName(u"statusbar")
-        Login.setStatusBar(self.statusbar)
+        Usuarios.setStatusBar(self.statusbar)
+        QWidget.setTabOrder(self.combo_tipo, self.line_usuario)
         QWidget.setTabOrder(self.line_usuario, self.line_contrasena)
-        QWidget.setTabOrder(self.line_contrasena, self.boton_iniciar)
+        QWidget.setTabOrder(self.line_contrasena, self.line_confirmacion)
+        QWidget.setTabOrder(self.line_confirmacion, self.boton_registrar)
 
-        self.retranslateUi(Login)
+        self.retranslateUi(Usuarios)
 
-        QMetaObject.connectSlotsByName(Login)
+        QMetaObject.connectSlotsByName(Usuarios)
     # setupUi
 
-    def retranslateUi(self, Login):
-        Login.setWindowTitle(QCoreApplication.translate("Login", u"SANDIA SALUD", None))
-        self.boton_iniciar.setText(QCoreApplication.translate("Login", u"INICIAR SESI\u00d3N", None))
-        self.line_usuario.setPlaceholderText(QCoreApplication.translate("Login", u"USUARIO", None))
+    def retranslateUi(self, Usuarios):
+        Usuarios.setWindowTitle(QCoreApplication.translate("Usuarios", u"SANDIA SALUD", None))
+        self.boton_registrar.setText(QCoreApplication.translate("Usuarios", u"REGISTRAR", None))
+        self.line_usuario.setPlaceholderText(QCoreApplication.translate("Usuarios", u"USUARIO", None))
+        self.label_2.setText(QCoreApplication.translate("Usuarios", u"CONFIGURAR USUARIOS", None))
         self.label.setText("")
-        self.line_contrasena.setPlaceholderText(QCoreApplication.translate("Login", u"CONTRASE\u00d1A", None))
-        self.label_2.setText(QCoreApplication.translate("Login", u"INICIAR SESI\u00d3N", None))
+        self.combo_tipo.setItemText(0, QCoreApplication.translate("Usuarios", u"SUPER-ADMIN", None))
+        self.combo_tipo.setItemText(1, QCoreApplication.translate("Usuarios", u"ADMIN", None))
+        self.combo_tipo.setItemText(2, QCoreApplication.translate("Usuarios", u"USUARIO", None))
+
+        self.line_confirmacion.setPlaceholderText(QCoreApplication.translate("Usuarios", u"REPITE LA CONTRASE\u00d1A", None))
+        self.line_contrasena.setPlaceholderText(QCoreApplication.translate("Usuarios", u"CONTRASE\u00d1A", None))
+        self.boton_volver.setText(QCoreApplication.translate("Usuarios", u"VOLVER", None))
     # retranslateUi
 

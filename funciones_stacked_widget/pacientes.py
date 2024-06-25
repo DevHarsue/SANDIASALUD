@@ -12,11 +12,9 @@ class VistaPacientes:
         self.paciente = False
     
     def preparar(self):
-        if not self.ventana.permisos[1]:
+        if self.ventana.rol=="USUARIO":
             self.ui.contenedor_consulta.hide()
-        if not self.ventana.permisos[2]:
             self.ui.contenedor_antecedentes.hide()
-        if not self.ventana.permisos[3]:
             self.ui.contenedor_datos_embarazo.hide()
         
         self.ui.boton_buscar.pressed.connect(self.buscar_paciente)

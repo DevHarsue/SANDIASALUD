@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Login</class>
- <widget class="QMainWindow" name="Login">
+ <class>Usuarios</class>
+ <widget class="QMainWindow" name="Usuarios">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -260,23 +260,36 @@ Line{
        </item>
        <item row="1" column="1">
         <layout class="QGridLayout" name="gridLayout">
-         <item row="5" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
-          <widget class="QPushButton" name="boton_iniciar">
+         <item row="7" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+          <widget class="QPushButton" name="boton_registrar">
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
-            <string>INICIAR SESIÓN</string>
+            <string>REGISTRAR</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
+         <item row="4" column="0">
           <widget class="QLineEdit" name="line_usuario">
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignCenter</set>
            </property>
            <property name="placeholderText">
             <string>USUARIO</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="styleSheet">
+            <string notr="true">font-size: 24px;</string>
+           </property>
+           <property name="text">
+            <string>CONFIGURAR USUARIOS</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
            </property>
           </widget>
          </item>
@@ -299,7 +312,45 @@ Line{
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
+         <item row="3" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+          <widget class="QComboBox" name="combo_tipo">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">min-width:8em;</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>SUPER-ADMIN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ADMIN</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>USUARIO</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLineEdit" name="line_confirmacion">
+           <property name="echoMode">
+            <enum>QLineEdit::EchoMode::Password</enum>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+           <property name="placeholderText">
+            <string>REPITE LA CONTRASEÑA</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
           <widget class="QLineEdit" name="line_contrasena">
            <property name="styleSheet">
             <string notr="true"/>
@@ -312,19 +363,6 @@ Line{
            </property>
            <property name="placeholderText">
             <string>CONTRASEÑA</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_2">
-           <property name="styleSheet">
-            <string notr="true">font-size: 24px;</string>
-           </property>
-           <property name="text">
-            <string>INICIAR SESIÓN</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignCenter</set>
            </property>
           </widget>
          </item>
@@ -343,6 +381,19 @@ Line{
          </property>
         </spacer>
        </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="boton_volver">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string>VOLVER</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
@@ -351,9 +402,11 @@ Line{
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
+  <tabstop>combo_tipo</tabstop>
   <tabstop>line_usuario</tabstop>
   <tabstop>line_contrasena</tabstop>
-  <tabstop>boton_iniciar</tabstop>
+  <tabstop>line_confirmacion</tabstop>
+  <tabstop>boton_registrar</tabstop>
  </tabstops>
  <resources/>
  <connections/>

@@ -369,7 +369,7 @@ QTableView QHeaderView{
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>8</number>
          </property>
          <widget class="QWidget" name="widget_citas">
           <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -852,7 +852,7 @@ QTableView QHeaderView{
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>588</width>
+                <width>242</width>
                 <height>1407</height>
                </rect>
               </property>
@@ -1556,6 +1556,195 @@ QTableView QHeaderView{
            </item>
           </layout>
          </widget>
+         <widget class="QWidget" name="widget_configuracion">
+          <layout class="QVBoxLayout" name="verticalLayout_21">
+           <item>
+            <spacer name="verticalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
+            <widget class="QPushButton" name="boton_crear_usuarios">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>CREAR USUARIOS</string>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
+            <widget class="QPushButton" name="boton_v_actulizar_usuarios">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>ACTUALIZAR USUARIOS</string>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
+            <widget class="QPushButton" name="boton_configurar_bd">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>CONFIGURAR BD</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="widget_actualizar_usuarios">
+          <layout class="QGridLayout" name="gridLayout_9">
+           <item row="1" column="0">
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="1" column="1">
+            <layout class="QGridLayout" name="gridLayout_8">
+             <item row="2" column="0" colspan="2">
+              <widget class="QLineEdit" name="line_confirmar">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>CONFIRMAR CONTRASEÑA</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="boton_buscar_usuario">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>BUSCAR</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLineEdit" name="line_usuario">
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>USUARIO</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="2">
+              <widget class="QLineEdit" name="line_contrasena">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>NUEVA CONTRASEÑA</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0" colspan="2">
+              <widget class="QPushButton" name="boton_actualizar_usuario">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>ACTUALIZAR</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0" colspan="2">
+              <widget class="QPushButton" name="boton_borrar_usuario">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>BORRAR</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="2">
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="1">
+            <spacer name="verticalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="1">
+            <spacer name="verticalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
          <widget class="QWidget" name="widget_consulta">
           <layout class="QVBoxLayout" name="verticalLayout_12">
            <item>
@@ -1567,8 +1756,8 @@ QTableView QHeaderView{
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>-171</y>
-                <width>588</width>
+                <y>0</y>
+                <width>232</width>
                 <height>587</height>
                </rect>
               </property>
@@ -1577,6 +1766,12 @@ QTableView QHeaderView{
                 <layout class="QGridLayout" name="gridLayout_5">
                  <item row="5" column="0" colspan="4">
                   <widget class="QWidget" name="consulta_antecedentes" native="true">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>0</height>
+                    </size>
+                   </property>
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -1922,9 +2117,91 @@ ANTECEDENTES</string>
   </widget>
  </widget>
  <tabstops>
+  <tabstop>boton_inicio</tabstop>
+  <tabstop>boton_v_consulta</tabstop>
   <tabstop>boton_v_citas</tabstop>
+  <tabstop>boton_v_agendar</tabstop>
   <tabstop>boton_v_pacientes</tabstop>
   <tabstop>boton_v_registrar_pacientes</tabstop>
+  <tabstop>boton_v_consultas</tabstop>
+  <tabstop>line_usuario</tabstop>
+  <tabstop>boton_buscar_usuario</tabstop>
+  <tabstop>line_contrasena</tabstop>
+  <tabstop>line_confirmar</tabstop>
+  <tabstop>boton_actualizar_usuario</tabstop>
+  <tabstop>combo_nacionalidad_agenda</tabstop>
+  <tabstop>line_cedula_agenda</tabstop>
+  <tabstop>boton_buscar_agenda</tabstop>
+  <tabstop>line_nombre_agenda</tabstop>
+  <tabstop>line_apellido_agenda</tabstop>
+  <tabstop>date_agenda</tabstop>
+  <tabstop>boton_agendar</tabstop>
+  <tabstop>date_cita_desde</tabstop>
+  <tabstop>date_cita_hasta</tabstop>
+  <tabstop>check_rango_cita</tabstop>
+  <tabstop>boton_buscar_cita</tabstop>
+  <tabstop>tabla_citas</tabstop>
+  <tabstop>boton_crear_usuarios</tabstop>
+  <tabstop>boton_v_actulizar_usuarios</tabstop>
+  <tabstop>boton_configurar_bd</tabstop>
+  <tabstop>scrollArea_2</tabstop>
+  <tabstop>combo_consulta_antecedentes</tabstop>
+  <tabstop>line_consulta_cedula</tabstop>
+  <tabstop>boton_consulta_cedula</tabstop>
+  <tabstop>line_consulta_nombre</tabstop>
+  <tabstop>line_consulta_apellido</tabstop>
+  <tabstop>boton_ver_antecedentes</tabstop>
+  <tabstop>date_primera_relacion_consulta</tabstop>
+  <tabstop>text_antecedente_patologico</tabstop>
+  <tabstop>text_antecedentes_quirurjicos</tabstop>
+  <tabstop>text_consulta_diagnostico</tabstop>
+  <tabstop>text_consulta_tratamiento</tabstop>
+  <tabstop>check_proxima_cita_consulta</tabstop>
+  <tabstop>date_proxima_cita_consulta</tabstop>
+  <tabstop>check_embarazo_consulta</tabstop>
+  <tabstop>date_consulta_ultima_regla</tabstop>
+  <tabstop>date_consulta_parto</tabstop>
+  <tabstop>boton_fin_consulta</tabstop>
+  <tabstop>combo_nacionalidad_consultas</tabstop>
+  <tabstop>line_cedula_consultas</tabstop>
+  <tabstop>boton_buscar_consultas</tabstop>
+  <tabstop>table_consultas</tabstop>
+  <tabstop>check_editar_consultas</tabstop>
+  <tabstop>text_diagnostico_edit</tabstop>
+  <tabstop>text_tratamiento_edit</tabstop>
+  <tabstop>boton_actualizar_consultas</tabstop>
+  <tabstop>boton_borrar_consultas</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>combo_nacionalidad</tabstop>
+  <tabstop>line_cedula_buscar</tabstop>
+  <tabstop>boton_buscar</tabstop>
+  <tabstop>check_datos_personales</tabstop>
+  <tabstop>line_nombre_editar</tabstop>
+  <tabstop>line_apellido_editar</tabstop>
+  <tabstop>date_fecha_nacimiento</tabstop>
+  <tabstop>line_telefono_editar</tabstop>
+  <tabstop>text_direccion_editar</tabstop>
+  <tabstop>check_proxima_cita</tabstop>
+  <tabstop>date_proxima_cita</tabstop>
+  <tabstop>check_consulta</tabstop>
+  <tabstop>text_diagnostico</tabstop>
+  <tabstop>text_tratamiento_consulta</tabstop>
+  <tabstop>check_antecedentes</tabstop>
+  <tabstop>text_patologicos</tabstop>
+  <tabstop>text_quirurjicos</tabstop>
+  <tabstop>text_tratamiento</tabstop>
+  <tabstop>date_relaciones</tabstop>
+  <tabstop>check_embarazo</tabstop>
+  <tabstop>date_ultima_regla</tabstop>
+  <tabstop>date_parto</tabstop>
+  <tabstop>boton_borrar_paciente</tabstop>
+  <tabstop>boton_actualizar_datos</tabstop>
+  <tabstop>boton_imprimir</tabstop>
+  <tabstop>date_primera_relacion</tabstop>
+  <tabstop>text_antecedente_patologico_registro</tabstop>
+  <tabstop>text_antecedente_quirurjico_registro</tabstop>
+  <tabstop>text_tratamiento_registro</tabstop>
+  <tabstop>boton_registrar_antecedentes</tabstop>
   <tabstop>nacionalidad</tabstop>
   <tabstop>line_cedula</tabstop>
   <tabstop>line_nombre</tabstop>
@@ -1935,6 +2212,7 @@ ANTECEDENTES</string>
   <tabstop>boton_registrar</tabstop>
   <tabstop>boton_v_configuracion</tabstop>
   <tabstop>boton_v_cerrar_sesion</tabstop>
+  <tabstop>text_tratamiento_actual</tabstop>
  </tabstops>
  <resources/>
  <connections/>

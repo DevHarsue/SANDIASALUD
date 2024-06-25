@@ -48,3 +48,6 @@ class TablaUsuarios(Tabla):
     
     def select_usuario(self,usuario):
         return self.bd.consultar(f"SELECT * FROM usuarios WHERE nombre_usuario='{usuario}'")
+    
+    def select_rol(self):
+        return self.bd.consultar(f"SELECT rol FROM usuarios;")
