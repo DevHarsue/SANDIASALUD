@@ -369,7 +369,7 @@ QTableView QHeaderView{
 </string>
          </property>
          <property name="currentIndex">
-          <number>8</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="widget_citas">
           <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -678,6 +678,9 @@ QTableView QHeaderView{
                <property name="enabled">
                 <bool>false</bool>
                </property>
+               <property name="tabChangesFocus">
+                <bool>true</bool>
+               </property>
                <property name="placeholderText">
                 <string>TRATAMIENTO</string>
                </property>
@@ -704,6 +707,9 @@ QTableView QHeaderView{
               <widget class="QTextEdit" name="text_diagnostico_edit">
                <property name="enabled">
                 <bool>false</bool>
+               </property>
+               <property name="tabChangesFocus">
+                <bool>true</bool>
                </property>
                <property name="placeholderText">
                 <string>DIAGNOSTICO</string>

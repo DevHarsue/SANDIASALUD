@@ -399,7 +399,6 @@ Line{
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
   <tabstop>combo_tipo</tabstop>

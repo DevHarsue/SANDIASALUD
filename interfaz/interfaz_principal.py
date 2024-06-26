@@ -509,6 +509,7 @@ class Ui_SANDIASALUD(object):
         self.text_tratamiento_edit = QTextEdit(self.widget_consultas)
         self.text_tratamiento_edit.setObjectName(u"text_tratamiento_edit")
         self.text_tratamiento_edit.setEnabled(False)
+        self.text_tratamiento_edit.setTabChangesFocus(True)
 
         self.gridLayout_4.addWidget(self.text_tratamiento_edit, 4, 0, 1, 3)
 
@@ -523,6 +524,7 @@ class Ui_SANDIASALUD(object):
         self.text_diagnostico_edit = QTextEdit(self.widget_consultas)
         self.text_diagnostico_edit.setObjectName(u"text_diagnostico_edit")
         self.text_diagnostico_edit.setEnabled(False)
+        self.text_diagnostico_edit.setTabChangesFocus(True)
 
         self.gridLayout_4.addWidget(self.text_diagnostico_edit, 3, 0, 1, 3)
 
@@ -1475,7 +1477,7 @@ class Ui_SANDIASALUD(object):
 
         self.retranslateUi(SANDIASALUD)
 
-        self.stacked_widget.setCurrentIndex(8)
+        self.stacked_widget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(SANDIASALUD)

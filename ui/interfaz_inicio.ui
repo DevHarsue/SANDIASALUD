@@ -348,7 +348,6 @@ Line{
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
   <tabstop>line_usuario</tabstop>

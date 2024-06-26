@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QStatusBar, QVBoxLayout, QWidget)
+    QVBoxLayout, QWidget)
 
 class Ui_Configuracion(object):
     def setupUi(self, Configuracion):
@@ -305,9 +305,6 @@ class Ui_Configuracion(object):
         self.verticalLayout_3.addWidget(self.contenedor_principal)
 
         Configuracion.setCentralWidget(self.centralwidget)
-        self.statusbar = QStatusBar(Configuracion)
-        self.statusbar.setObjectName(u"statusbar")
-        Configuracion.setStatusBar(self.statusbar)
         QWidget.setTabOrder(self.line_usuario, self.line_contrasena)
         QWidget.setTabOrder(self.line_contrasena, self.line_host)
         QWidget.setTabOrder(self.line_host, self.line_puerto)
