@@ -1,4 +1,6 @@
-sandia_salud_venv
+sandia
 __pycache__
 _ui.ui
 .env
+SANDIASALUD
+*.rar
